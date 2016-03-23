@@ -15,6 +15,7 @@ public class KeyGameP3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("Hallo ik ben Ruben!");
         System.out.println("Hallo 2");
     }
     
