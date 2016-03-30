@@ -7,18 +7,8 @@ package keygamep3;
 
 /**
  *
- * @author rubenvde
+ * @author Ruben
  */
-public class KeyGameP3 {
-
-    /**
-     * @param args the command line arguments
-     */
-    
-    
-    
-    public static void main(String[] args) {
-        Spel spel = new Spel();
-    }
+public class Level {
     
 }
