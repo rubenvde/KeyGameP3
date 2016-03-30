@@ -19,9 +19,16 @@ public class Spel {
     
     private final int FRAME_WIDTH = 600;
     private final int FRAME_HEIGTH = 600;
+    
+    private Level currentLevel;
 
     public Spel() {
         levels = new Level[5];
+        
+        
+        
+        //Start met het eerste level
+        currentLevel = levels[0];
         
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
