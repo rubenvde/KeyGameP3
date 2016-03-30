@@ -10,5 +10,18 @@ package keygamep3;
  * @author Ruben
  */
 public class Level {
+    private int veldGrootte;
+    private Speler speler;
+    private Spel spel;
+    private Veld[][] speelVeld;
     
+    
+    
+    public Level(Spel spel) {
+        this.spel = spel;
+        
+        //Dit mag dus niet hardcoded
+        //speler = new Speler(new Positie(0,0));
+        
+    }
 }

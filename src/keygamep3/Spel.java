@@ -20,6 +20,7 @@ public class Spel extends JFrame{ // dit maakt het makkelijk aangezien we met 1 
     private final int FRAME_HEIGTH = 640;// Hier moeten we nog over nadenken
     
     private Level [] levels; // Misschien handig als we 3 constructors aanmaken met ieder zijn eigen level
+     private Level currentLevel;
     
     private JPanel paneelKnoppen;
     private JButton startKnop, resetKnop;
@@ -29,12 +30,13 @@ public class Spel extends JFrame{ // dit maakt het makkelijk aangezien we met 1 
         setTitle("KeyGame");
         setSize(FRAME_WIDTH, FRAME_HEIGTH);
         setLayout(new BorderLayout());
-        
-        levels = new Level[3];
-        levels[0] = new Level();//level 1
-        levels[1] = new Level();//level 2
-        levels[2] = new Level();//level 3
-        
+        /*
+        levels = new Level[5];
+
+        //Start met het eerste level
+        currentLevel = levels[0];
+        */
+
         /*
         paneelLevel = new JPanel(); // NIET NODIG OMDAT DE LEVEL AL EEN PANEEL HEEFT
         //paneelLevel.setLayout(new GridLayout(10, 10, 0, 0));
