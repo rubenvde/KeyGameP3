@@ -46,6 +46,8 @@ public class Spel {
         
         f.add(paneelKnoppen, BorderLayout.SOUTH);
         f.add(levelPaneel, BorderLayout.CENTER);
+        
+        //Test voor github
     }
     public void startLevel() {
         
