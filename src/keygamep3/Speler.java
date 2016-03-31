@@ -10,9 +10,9 @@ package keygamep3;
  * @author rubenvde
  */
 public class Speler {
-    private Positie positie;
+    private Dimensie positie;
     
-    public Speler(Positie positie) {
+    public Speler(Dimensie positie) {
         this.positie = positie;
     }
 }

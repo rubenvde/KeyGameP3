@@ -9,11 +9,11 @@ package keygamep3;
  *
  * @author rubenvde
  */
-public class Positie {
+public class Dimensie {
     private int x;
     private int y;
     
-    public Positie(int x, int y) {
+    public Dimensie(int x, int y) {
         this.x = x;
         this.y = y;
     }

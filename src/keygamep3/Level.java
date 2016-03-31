@@ -10,24 +10,41 @@ package keygamep3;
  * @author Ruben
  */
 public class Level {
-    private int veldGrootte;
+    private Dimensie dimensie;
     private Speler speler;
-    private Spel spel;
-    private Veld[][] speelVeld;
-    
-    
-    
-    public Level(Spel spel, Veld[][] sV) {
-        this.spel = spel;
+    //private Veld[][] speelVeld;
+
+    public Level() {
         
-        //Speelveld moet aangemaakt worden door spel
-        this.speelVeld = sV;
+        dimensie = new Dimensie(5,5);
+        //speelVeld = new Veld[][];
+        //Dit mag dus niet hardcoded
+        //speler = new Speler(new Positie(0,0));
         
     }
     
-    //Moet misschien ook in construtor? Geen speler, geen spel met level?
-    public void creerSpeler(Positie p) {
-        this.speler = new Speler(p);
+    private void creëerVeld(){
+        for (int i = 0; i < dimensie.getX(); i++) {
+            for (int j = 0; j < dimensie.getY(); j++) {
+                //speelVeld[i][j] = new Veld();
+                
+            }
+        }
     }
     
+    public void reset(){
+        
+    }
+    
+    public void bereiktEindveld(){
+        
+    }
+    
+    public void verplaatsSpeler(){
+        
+    }
+    
+    public void spelerSleutelPakken(){
+        
+    }
 }
