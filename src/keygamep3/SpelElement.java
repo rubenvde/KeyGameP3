@@ -5,10 +5,34 @@
  */
 package keygamep3;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Ruben
  */
-public class SpelElement {
+public abstract class SpelElement {
+    
+    private ImageIcon afbeelding;
+    private int pincode;
+    private boolean toegankelijk;
+    
+    public SpelElement() {
+        
+        
+    }
+    
+    public boolean isToegankelijk(int pincode) {
+        
+        this.pincode = pincode;
+        if (pincode == Speler.pincode) {
+            toegankelijk = true;
+        }
+        else {
+            toegankelijk = false;
+        }
+        return toegankelijk;
+        
+    }
     
 }

@@ -9,6 +9,9 @@ package keygamep3;
  *
  * @author Ruben
  */
-public class Barricade {
+public class Barricade extends SpelElement {
     
+    public Barricade() {
+        
+    }
 }

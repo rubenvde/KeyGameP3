@@ -9,6 +9,19 @@ package keygamep3;
  *
  * @author Ruben
  */
-public class Muur {
+public class Muur extends SpelElement {
+    
+    private boolean toegankelijk;
+    
+    public Muur() {
+        
+        
+    }
+    
+    public boolean isToegankelijk() {
+        
+        toegankelijk = false;
+        return toegankelijk;
+    }
     
 }

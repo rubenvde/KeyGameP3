@@ -9,6 +9,17 @@ package keygamep3;
  *
  * @author Ruben
  */
-public class Sleutel {
+public class Sleutel extends SpelElement {
     
+    private boolean toegankelijk;
+    
+    public Sleutel() {
+        
+    }
+    
+    public boolean isToegankelijk(int pincode) {
+        
+        toegankelijk = true;
+        return toegankelijk;
+    }
 }
