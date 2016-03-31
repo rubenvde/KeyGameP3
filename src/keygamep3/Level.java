@@ -11,40 +11,40 @@ import javax.swing.*;
 
 /**
  *
- * @author Ruben
+ * @author Ruben, Koray, Ruben
  */
 public class Level extends JFrame{
+    
     private Dimensie dimensie;
     private Speler speler;
+    private final int VAK_BREEDTE = 64;
+    private final int VAK_HOOGTE = 64;
     //private Veld[][] speelVeld;
     
-    private JTable [][] testCells;
+    private JLabel [][] testCells;
 
     public Level() {
         
-        dimensie = new Dimensie(3,5);
-        testCells = new JTable[10][10];
+        dimensie = new Dimensie(6,5);
+        testCells = new JLabel[10][10];
         setTitle("TestGrid");
-        setSize(640, 640);
-        setLayout(new GridLayout(dimensie.getX(),dimensie.getY()));
+        setSize(VAK_BREEDTE*dimensie.getX(), VAK_HOOGTE*dimensie.getY());
+        setLayout(new GridLayout(dimensie.getY(),dimensie.getX()));
         
         //speelVeld = new Veld[][];
-        //Dit mag dus niet hardcoded
-        //speler = new Speler(new Positie(0,0));
         
         creëerVeld();
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
     }
     
     private void creëerVeld(){
-        
         for (int i = 0; i < dimensie.getX(); i++) {
             for (int j = 0; j < dimensie.getY(); j++) {
-                testCells[i][j] = new JTable();
-                testCells[i][j].setBackground(Color.YELLOW);
+                testCells[i][j] = new JLabel();
+                //testCells[i][j].setIcon(new ImageIcon(getClass().getResource("grass.png")));
                 testCells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 add(testCells[i][j]);
             }

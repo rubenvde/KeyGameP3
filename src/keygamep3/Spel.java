@@ -92,6 +92,6 @@ public class Spel extends JFrame{ // dit maakt het makkelijk aangezien we met 1 
         Spel spel = new Spel();
         
     }
-    
     */
+    
 }
