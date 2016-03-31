@@ -11,17 +11,15 @@ package keygamep3;
  */
 public class Muur extends SpelElement {
     
-    private boolean toegankelijk;
     
     public Muur() {
         
-        
     }
     
-    public boolean isToegankelijk() {
+    @Override
+    public boolean isToegankelijk(int pincode) {
         
-        toegankelijk = false;
-        return toegankelijk;
+        return false;
     }
     
 }

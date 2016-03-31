@@ -5,21 +5,27 @@
  */
 package keygamep3;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Ruben
  */
 public class Sleutel extends SpelElement {
     
-    private boolean toegankelijk;
+    private ImageIcon afbeelding;
+    private int pincode;
     
-    public Sleutel() {
+    public Sleutel(int pincode) {
+        
+        this.pincode = pincode;
+        afbeelding = new ImageIcon(GetClass().GetResource("sleutel.png"));
         
     }
     
+    @Override
     public boolean isToegankelijk(int pincode) {
         
-        toegankelijk = true;
-        return toegankelijk;
+        return true;
     }
 }
