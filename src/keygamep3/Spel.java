@@ -37,24 +37,9 @@ public class Spel extends JFrame{ // dit maakt het makkelijk aangezien we met 1 
         currentLevel = levels[0];
         */
 
-        /*
-        paneelLevel = new JPanel(); // NIET NODIG OMDAT DE LEVEL AL EEN PANEEL HEEFT
-        //paneelLevel.setLayout(new GridLayout(10, 10, 0, 0));
-        paneelLevel.setSize(300, 300);
-        paneelLevel.setBackground(Color.YELLOW);
-        paneelLevel.add(new JButton());
-        
-        paneelKnoppen = new JPanel();
-        paneelKnoppen.setBackground(Color.DARK_GRAY);
-        
-        BOVENSTAANDE NIET NODIG, OMDAT DIE ZIJN GEIMPLEMENTEERD IN PANEELKNOPJES() EN MAAKPANEEL() METHODE
-        */
         
         paneelKnopjes();
         maakPaneel();
-
-        //frame.add(paneelLevel, BorderLayout.CENTER);  <---- NIET NODIG, WANT HIJ ZIT IN createPaneel()
-        //frame.add(paneelKnoppen, BorderLayout.SOUTH); <---- NIET NODIG, WANT HIJ ZIT IN createPaneel()
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -101,11 +86,12 @@ public class Spel extends JFrame{ // dit maakt het makkelijk aangezien we met 1 
         
     }
     
-    public static void main(String[] args) { // Gebruik ik om te zien of het goed werkt.
+    /*
+    public static void main(String[] args) { // Gebruik ik om te zien of het goed werkt. Voor Koray
         
         Spel spel = new Spel();
         
     }
     
-    
+    */
 }

@@ -17,11 +17,17 @@ public class Level {
     
     
     
-    public Level(Spel spel) {
+    public Level(Spel spel, Veld[][] sV) {
         this.spel = spel;
         
-        //Dit mag dus niet hardcoded
-        //speler = new Speler(new Positie(0,0));
+        //Speelveld moet aangemaakt worden door level
+        this.speelVeld = sV;
         
     }
+    
+    //Moet misschien ook in construtor? Geen speler, geen spel met level?
+    public void creerSpeler(Positie p) {
+        this.speler = new Speler(p);
+    }
+    
 }
