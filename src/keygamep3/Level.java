@@ -5,29 +5,48 @@
  */
 package keygamep3;
 
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.*;
+
 /**
  *
  * @author Ruben
  */
-public class Level {
+public class Level extends JFrame{
     private Dimensie dimensie;
     private Speler speler;
     //private Veld[][] speelVeld;
+    
+    private JTable [][] testCells;
 
     public Level() {
         
-        dimensie = new Dimensie(5,5);
+        dimensie = new Dimensie(3,5);
+        testCells = new JTable[10][10];
+        setTitle("TestGrid");
+        setSize(640, 640);
+        setLayout(new GridLayout(dimensie.getX(),dimensie.getY()));
+        
         //speelVeld = new Veld[][];
         //Dit mag dus niet hardcoded
         //speler = new Speler(new Positie(0,0));
         
+        creëerVeld();
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setVisible(true);
     }
     
     private void creëerVeld(){
+        
         for (int i = 0; i < dimensie.getX(); i++) {
             for (int j = 0; j < dimensie.getY(); j++) {
-                //speelVeld[i][j] = new Veld();
-                
+                testCells[i][j] = new JTable();
+                testCells[i][j].setBackground(Color.YELLOW);
+                testCells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                add(testCells[i][j]);
             }
         }
     }
@@ -47,4 +66,10 @@ public class Level {
     public void spelerSleutelPakken(){
         
     }
+    
+    public static void main(String[] args) { // <-- Geen zorgen jongens dit is alleen voor mij :D
+        
+        Level level = new Level();
+    }
+    
 }
