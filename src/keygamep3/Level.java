@@ -20,7 +20,7 @@ public class Level {
     public Level(Spel spel, Veld[][] sV) {
         this.spel = spel;
         
-        //Speelveld moet aangemaakt worden door level
+        //Speelveld moet aangemaakt worden door spel
         this.speelVeld = sV;
         
     }
