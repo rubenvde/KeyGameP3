@@ -10,5 +10,13 @@ package keygamep3;
  * @author rubenvde
  */
 public class Veld {
+    private boolean isEindveld; // <- nog overna denken
+    private SpelElement spelElement;
     
+    public Veld() {
+        this.spelElement = null;
+    }
+    public Veld(SpelElement spelElement) {
+        this.spelElement = spelElement;
+    }
 }

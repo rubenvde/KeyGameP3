@@ -7,6 +7,9 @@ package keygamep3;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileReader;
+import java.io.IOException;
+import static java.lang.Math.round;
 import javax.swing.*;
 
 /**
@@ -24,11 +27,13 @@ public class Level extends JFrame{
     private JPanel paneelKnoppen, paneelLevel;
     private JButton startKnop, resetKnop;
     
-    //private Veld[][] speelVeld;
+    private Veld[][] speelVeld;
     
     private JLabel [][] testCells;
 
     public Level() {
+        loadLevel();
+        
         dimensie = new Dimensie(8,5);
         testCells = new JLabel[dimensie.getY()][dimensie.getX()];
         
@@ -111,6 +116,85 @@ public class Level extends JFrame{
     public static void main(String[] args) { // <-- Geen zorgen, dit is alleen voor mij :D
         
         Level level = new Level();
+    }
+    
+    private void loadLevel() {
+        // The name of the file to open.
+        String file = new String();
+        
+        try {
+            FileReader reader = new FileReader("temp.txt");
+            int character;
+            while ((character = reader.read()) != -1) {
+                file += (char) character;
+            }
+            reader.close();
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        //File is opgehaald nu filteren
+        
+        // Veld dimentie scheiden van veld
+        String[] dOfV = file.split(",veld:");
+        
+        // Dimenties scheiden
+        String[] dimenties = dOfV[0].split(",");
+        
+        int x = 0;
+        int y = 0;
+        //Haal de x en y op
+        for(int i = 0; i < dimenties.length; i++) {
+            if(dimenties[i].startsWith("x:")) {
+                String[] xSplit = dimenties[i].split(":");
+                if(xSplit.length > 1) {
+                    x = Integer.parseInt(xSplit[1]);
+                }
+                else
+                {
+                    System.out.println("Whoops error! Er klopt iets niet met de indeling");
+                    return;
+                }
+            }
+            else if(dimenties[i].startsWith("y:")) {
+                String[] ySplit = dimenties[i].split(":");
+                if(ySplit.length > 1) {
+                    y = Integer.parseInt(ySplit[1]);
+                }
+                else
+                {
+                    System.out.println("Whoops error! Er klopt iets niet met de indeling");
+                    return;
+                }
+            }
+            else {
+                
+                System.out.println("Huh? Iets extra's? Error! " + dimenties[i]);
+            }
+        }
+        
+        //x en y zijn nu opgenomen nu het veld
+        String[] veld = dOfV[1].split(",");
+        
+        speelVeld = new Veld[y][x];
+        
+        for(int i = 0; i < veld.length; i++) {
+            int tempY = round(i / y);
+            int tempX = i % x;
+            speelVeld[tempY][tempX] = new Veld();
+            
+            //Als er een P staat
+            if(veld[i].equals("P")) {
+                //Doe iets
+                //speelVeld[tempY][tempX] = new Veld();
+            }
+            else if(veld[i].equals("M")) {
+                //speelVeld[tempY][tempX] = new Veld(new Muur());
+            }
+            
+            
+        }
     }
     
 }
