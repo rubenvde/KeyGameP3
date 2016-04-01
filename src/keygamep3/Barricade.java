@@ -8,6 +8,7 @@ package keygamep3;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,12 +21,7 @@ public class Barricade extends SpelElement {
     public Barricade(int pincode) {
         
         this.pincode = pincode;
-        afbeelding = null;
-        try {
-            afbeelding = ImageIO.read(new File("doors.png"));
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
+        this.afbeelding = new ImageIcon(getClass().getResource("/Plaatjes/doors.png"));
 
 
     }

@@ -22,12 +22,8 @@ public class Sleutel extends SpelElement {
     public Sleutel(int pincode) {
 
         this.pincode = pincode;
-        afbeelding = null;
-        try {
-            afbeelding = ImageIO.read(new File("sleutel.png"));
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
+        this.afbeelding = new ImageIcon(getClass().getResource("/Plaatjes/sleutel.png"));
+
 
     }
 

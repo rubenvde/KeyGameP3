@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public abstract class SpelElement {
 
-    protected BufferedImage afbeelding;
+    protected ImageIcon afbeelding;
 
     public abstract boolean isToegankelijk(int pincode);
 

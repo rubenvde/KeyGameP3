@@ -8,6 +8,7 @@ package keygamep3;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,13 +19,7 @@ public class Muur extends SpelElement {
     
     public Muur() {
         
-        afbeelding = null;
-        try {
-            afbeelding = ImageIO.read(new File("muur.png"));
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
-
+        this.afbeelding = new ImageIcon(getClass().getResource("/Plaatjes/muur.png"));
     }
     
     @Override
