@@ -5,6 +5,8 @@
  */
 package keygamep3;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author rubenvde
@@ -18,5 +20,16 @@ public class Veld {
     }
     public Veld(SpelElement spelElement) {
         this.spelElement = spelElement;
+    }
+    
+    //Schrijf Spelelement
+    public ImageIcon getSpelElementIcon() {
+        if(this.spelElement != null) {
+            return this.spelElement.getAfbeelding();
+        }
+        else
+        {
+            return null;
+        }
     }
 }

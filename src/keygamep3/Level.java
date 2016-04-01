@@ -63,7 +63,10 @@ public class Level extends JFrame{
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
                 testCells[i][j] = new JLabel();
-                testCells[i][j].setIcon(new ImageIcon("Plaatjes/grass.png"));//<-- Test afbeelding
+                if(speelVeld[i][j].getSpelElementIcon() != null) {
+                    testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());//<-- Test afbeelding
+                }
+                
                 paneelLevel.add(testCells[i][j]);
             }
         }
