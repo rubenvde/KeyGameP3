@@ -19,7 +19,7 @@ public class Muur extends SpelElement {
     
     public Muur() {
         
-        this.afbeelding = new ImageIcon(getClass().getResource("Plaatjes/muur.png"));
+        this.afbeelding = new ImageIcon("Plaatjes/muur.png");
     }
     
     @Override

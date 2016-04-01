@@ -21,7 +21,7 @@ public class Barricade extends SpelElement {
     public Barricade(int pincode) {
         
         this.pincode = pincode;
-        this.afbeelding = new ImageIcon(getClass().getResource("Plaatjes/doors.png"));
+        this.afbeelding = new ImageIcon("Plaatjes/doors.png");
 
 
     }
