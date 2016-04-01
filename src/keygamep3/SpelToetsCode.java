@@ -5,14 +5,17 @@
  */
 package keygamep3;
 
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author Ruben
  */
-public enum SpelToetsCode() {
+public enum SpelToetsCode {
     
+    //Omhoog, Omlaag, Rechts, links;
     
+    Omhoog = keyEvent.VK_UP;
 }
     
 
