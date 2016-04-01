@@ -191,11 +191,12 @@ public class Level extends JFrame{
             //Als er een P staat
             if(veld[i].equals("P")) {
                 //Doe iets
-                //speelVeld[tempY][tempX] = new Veld();
+                speelVeld[tempY][tempX] = new Veld();
                 System.out.println("Speler nog niet geïmplementeerd");
             }
             else if(veld[i].equals("E")) {
                 //Doe iets
+                speelVeld[tempY][tempX] = new Veld();
                 System.out.println("Eindveld nog niet geïmplementeerd");
             }
             else if(veld[i].equals("M")) {
