@@ -18,7 +18,6 @@ public class Speler extends JFrame{
     private Dimensie positie;
     private Sleutel zak;
     private ImageIcon spelerAfbeelding;
-    private Image getImage;
     private JButton button;
     
     public Speler() {//    public Speler(Dimensie positie) {
