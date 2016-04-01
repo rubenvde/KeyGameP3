@@ -5,10 +5,20 @@
  */
 package keygamep3;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Ruben
  */
-public enum SpelToetsCode {
+public enum SpelToetsCode() {
     
+    public class ClickListener implements ActionListener {
+        
+        
+    }
+    
+    public SpelToetsCode(KeyEvent event) {
+        
+    }
 }
