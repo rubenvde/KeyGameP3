@@ -6,33 +6,20 @@
 package keygamep3;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 /**
  *
  * @author rubenvde
  */
-public class Speler extends JFrame{
+public class Speler {
     
     private Dimensie positie;
     private Sleutel zak;
     private ImageIcon spelerAfbeelding;
-    private JButton button;
     
-    public Speler() {//    public Speler(Dimensie positie) {
-
-        
-        setSize(300, 400);
-        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.positie = positie;
-        //getImage = new ImageIcon("KeyGameP3/build/classes/keygamep3/Plaatjes/speler.jpg").getImage();
+    public Speler(Dimensie positie) {
+        this.positie = positie;
         this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
-        //this.spelerAfbeelding = getImage;
-        button = new JButton(spelerAfbeelding);
-        add(button);
-        setVisible(true);
     }
     
     public Dimensie getPositie(){
@@ -49,11 +36,6 @@ public class Speler extends JFrame{
     
     public void setSleutel(Sleutel sleutel){
         this.zak = sleutel;
-    }
-    
-    public static void main(String[] args) {
-        
-        Speler sp = new Speler();
     }
     
 }
