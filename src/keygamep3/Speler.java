@@ -5,14 +5,54 @@
  */
 package keygamep3;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 /**
  *
  * @author rubenvde
  */
-public class Speler {
-    private Dimensie positie;
+public class Speler extends JFrame{
     
-    public Speler(Dimensie positie) {
+    private Dimensie positie;
+    private Sleutel zak;
+    private ImageIcon spelerAfbeelding;
+    private JButton button;
+    
+    public Speler() {//    public Speler(Dimensie positie) {
+
+        
+        setSize(300, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.positie = positie;
+        this.spelerAfbeelding = new ImageIcon(getClass().getResource("doors.png"));
+        button = new JButton(spelerAfbeelding);
+        add(button);
+        setVisible(true);
+    }
+    
+    public Dimensie getPositie(){
+        return this.positie;
+    }
+    
+    public void setPositie(Dimensie positie){
         this.positie = positie;
+    }
+    
+    public Sleutel getSleutel(){
+        return zak;
+    }
+    
+    public void setSleutel(Sleutel sleutel){
+        this.zak = sleutel;
+    }
+    
+    public static void main(String[] args) {
+        Speler sp = new Speler();
+    }
+    
+    private void spelerImage(){
+        
     }
 }
