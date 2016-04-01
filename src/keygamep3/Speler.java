@@ -28,7 +28,7 @@ public class Speler extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //this.positie = positie;
         //getImage = new ImageIcon("KeyGameP3/build/classes/keygamep3/Plaatjes/speler.jpg").getImage();
-        this.spelerAfbeelding = new ImageIcon(getClass().getResource("/Plaatjes/speler.jpg"));
+        this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
         //this.spelerAfbeelding = getImage;
         button = new JButton(spelerAfbeelding);
         add(button);
