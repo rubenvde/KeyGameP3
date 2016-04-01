@@ -5,6 +5,7 @@
  */
 package keygamep3;
 
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public abstract class SpelElement {
 
-    private ImageIcon afbeelding;
+    protected BufferedImage afbeelding;
 
     public abstract boolean isToegankelijk(int pincode);
 
