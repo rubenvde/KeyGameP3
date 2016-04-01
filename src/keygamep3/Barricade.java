@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 public class Barricade extends SpelElement {
 
     private int pincode;
+    private Speler speler;
 
     public Barricade(int pincode) {
         
@@ -26,8 +27,8 @@ public class Barricade extends SpelElement {
 
     }
     
-    public int getPincode() {
-        return pincode;
+    public Speler getPincode() {
+        return speler;
     }
 
     /**
@@ -38,7 +39,7 @@ public class Barricade extends SpelElement {
     @Override
     public boolean isToegankelijk(int pincode) {
         
-        if (pincode == speler.pincode) {        //weet ff niet wat ik hier moet zetten omdat speler class nog niet gemaakt is
+        if (pincode == speler) {        //weet ff niet wat ik hier moet zetten omdat speler class nog niet gemaakt is
             return true;
         } else {
             return false;
