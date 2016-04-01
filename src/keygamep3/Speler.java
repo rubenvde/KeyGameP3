@@ -30,7 +30,8 @@ public class Speler {
         this.positie = positie;
     }
     
-    public Sleutel getSleutel(){
+    public int getSleutel(){
+        int zak = this.zak.getPincode();
         return zak;
     }
     
