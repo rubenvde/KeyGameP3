@@ -10,6 +10,8 @@ import java.awt.event.*;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Math.round;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.*;
 
 /**
@@ -188,11 +190,37 @@ public class Level extends JFrame{
             if(veld[i].equals("P")) {
                 //Doe iets
                 //speelVeld[tempY][tempX] = new Veld();
+                System.out.println("Speler nog niet geïmplementeerd");
+            }
+            else if(veld[i].equals("E")) {
+                //Doe iets
+                System.out.println("Eindveld nog niet geïmplementeerd");
             }
             else if(veld[i].equals("M")) {
-                //speelVeld[tempY][tempX] = new Veld(new Muur());
+                speelVeld[tempY][tempX] = new Veld(new Muur());
             }
-            
+            else if(veld[i].startsWith("B")) {
+                //krijg value in ()
+                int pincode = 0;
+                Matcher m = Pattern.compile("\\(([^)]+)\\)").matcher(veld[i]);
+                while(m.find()) {
+                    pincode = Integer.parseInt(m.group(1));   
+                }
+                speelVeld[tempY][tempX] = new Veld(new Barricade(pincode));
+            }
+            else if(veld[i].startsWith("S")) {
+                //krijg value in ()
+                int pincode = 0;
+                Matcher m = Pattern.compile("\\(([^)]+)\\)").matcher(veld[i]);
+                while(m.find()) {
+                    pincode = Integer.parseInt(m.group(1));   
+                }
+                speelVeld[tempY][tempX] = new Veld(new Sleutel(pincode));
+            }
+            else if(veld[i].equals("X")) {
+                //Speelveld is leeg
+                speelVeld[tempY][tempX] = new Veld();
+            }
             
         }
     }
