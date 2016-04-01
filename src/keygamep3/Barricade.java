@@ -5,6 +5,10 @@
  */
 package keygamep3;
 
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Ruben
@@ -16,6 +20,13 @@ public class Barricade extends SpelElement {
     public Barricade(int pincode) {
         
         this.pincode = pincode;
+        afbeelding = null;
+        try {
+            afbeelding = ImageIO.read(new File("doors.png"));
+        } catch (IOException e) {
+            System.out.println("Error");
+        }
+
 
     }
     
