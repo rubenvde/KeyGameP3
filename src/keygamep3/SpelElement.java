@@ -18,8 +18,6 @@ public abstract class SpelElement {
     
     public abstract ImageIcon getAfbeelding();
         
-    
-
     public abstract boolean isToegankelijk(int pincode);
 
 }
