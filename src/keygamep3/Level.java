@@ -47,6 +47,7 @@ public class Level extends JFrame{
         //speelVeld = new Veld[][];
         
         creëerVeld();
+        creëerSpeler();
         paneelKnoppen();
         maakPaneel();
         
@@ -64,14 +65,17 @@ public class Level extends JFrame{
             for (int j = 0; j < dimensie.getX(); j++) {
                 testCells[i][j] = new JLabel();
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
-                    testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());//<-- Test afbeelding
+                    testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());
                 }
                 
                 paneelLevel.add(testCells[i][j]);
             }
         }
     }
-    
+    private void creëerSpeler(){
+        Dimensie spelerPos = speler.getPositie();
+        //testCells[spelerPos.getY()][spelerPos.getX()] 
+    }
     ///    
     /// Inner class
         class knopActie implements ActionListener{
