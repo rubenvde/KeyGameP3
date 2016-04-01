@@ -14,8 +14,24 @@ import java.awt.event.KeyEvent;
 public enum SpelToetsCode {
     
     //Omhoog, Omlaag, Rechts, links;
+   
+    Omhoog(KeyEvent.VK_ENTER),
+    Omlaag(KeyEvent.VK_DOWN),
+    Rechts(KeyEvent.VK_RIGHT),
+    Links(KeyEvent.VK_LEFT),
     
-    Omhoog = keyEvent.VK_UP;
+    SleutelOppakken(KeyEvent.VK_SPACE);
+    
+    private int keyCode;
+    
+    private SpelToetsCode(int keyCode) {
+        
+        this.keyCode = keyCode;
+    }
+    
+    private int getKeyCode() {
+        return keyCode;
+    }
 }
     
 
