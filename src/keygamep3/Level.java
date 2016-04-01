@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Math.round;
+import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
@@ -35,8 +36,8 @@ public class Level extends JFrame{
 
     public Level() {
         loadLevel();
-        
-        dimensie = new Dimensie(8,5);
+ 
+        //dimensie = new Dimensie(8,5); <- wordt nu uit level gehaald
         testCells = new JLabel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
@@ -175,7 +176,8 @@ public class Level extends JFrame{
                 System.out.println("Huh? Iets extra's? Error! " + dimenties[i]);
             }
         }
-        
+        //Zet dimensie
+        dimensie = new Dimensie(x,y);
         //x en y zijn nu opgenomen nu het veld
         String[] veld = dOfV[1].split(",");
         
