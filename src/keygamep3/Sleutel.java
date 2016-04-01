@@ -18,13 +18,19 @@ import javax.swing.ImageIcon;
 public class Sleutel extends SpelElement {
 
     private int pincode;
+    private ImageIcon afbeelding;
 
     public Sleutel(int pincode) {
 
         this.pincode = pincode;
+        //this.afbeelding.getAfbeelding() = new ImageIcon("Plaatjes/sleutel.png");
+
+    }
+
+    @Override
+    public ImageIcon getAfbeelding() {
         this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
-
-
+        return afbeelding;
     }
 
     public int getPincode() {

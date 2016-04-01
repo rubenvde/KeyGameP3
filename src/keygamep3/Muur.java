@@ -16,10 +16,17 @@ import javax.swing.ImageIcon;
  */
 public class Muur extends SpelElement {
     
+    private ImageIcon afbeelding;
     
     public Muur() {
         
+    }
+    
+    @Override
+    public ImageIcon getAfbeelding() {
+        
         this.afbeelding = new ImageIcon("Plaatjes/muur.png");
+        return afbeelding;
     }
     
     @Override

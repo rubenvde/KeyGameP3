@@ -18,17 +18,24 @@ public class Barricade extends SpelElement {
 
     private int pincode;
     private Speler speler;
+    private ImageIcon afbeelding;
 
     public Barricade(int pincode) {
         
         this.pincode = pincode;
-        this.afbeelding = new ImageIcon("Plaatjes/doors.png");
 
 
     }
     
     public Speler getPincode() {
         return speler;
+    }
+    
+    @Override
+    public ImageIcon getAfbeelding() {
+        
+        this.afbeelding = new ImageIcon("Plaatjes/doors.png");
+        return afbeelding;
     }
 
     /**
