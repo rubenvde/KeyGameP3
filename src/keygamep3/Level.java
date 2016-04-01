@@ -192,7 +192,7 @@ public class Level extends JFrame{
             if(veld[i].equals("P")) {
                 //Doe iets
                 speelVeld[tempY][tempX] = new Veld();
-                System.out.println("Speler nog niet geïmplementeerd");
+                speler = new Speler(new Dimensie(tempX, tempY));
             }
             else if(veld[i].equals("E")) {
                 //Doe iets
