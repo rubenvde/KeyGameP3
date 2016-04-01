@@ -18,15 +18,19 @@ public class Speler extends JFrame{
     private Dimensie positie;
     private Sleutel zak;
     private ImageIcon spelerAfbeelding;
+    private Image getImage;
     private JButton button;
     
     public Speler() {//    public Speler(Dimensie positie) {
 
         
         setSize(300, 400);
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //this.positie = positie;
-        this.spelerAfbeelding = new ImageIcon(getClass().getResource("doors.png"));
+        //getImage = new ImageIcon("KeyGameP3/build/classes/keygamep3/Plaatjes/speler.jpg").getImage();
+        this.spelerAfbeelding = new ImageIcon(getClass().getResource("/Plaatjes/speler.jpg"));
+        //this.spelerAfbeelding = getImage;
         button = new JButton(spelerAfbeelding);
         add(button);
         setVisible(true);
@@ -49,10 +53,8 @@ public class Speler extends JFrame{
     }
     
     public static void main(String[] args) {
+        
         Speler sp = new Speler();
     }
     
-    private void spelerImage(){
-        
-    }
 }
