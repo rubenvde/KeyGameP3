@@ -22,7 +22,7 @@ public class Sleutel extends SpelElement {
     public Sleutel(int pincode) {
 
         this.pincode = pincode;
-        this.afbeelding = new ImageIcon(getClass().getResource("/Plaatjes/sleutel.png"));
+        this.afbeelding = new ImageIcon(getClass().getResource("Plaatjes/sleutel.png"));
 
 
     }

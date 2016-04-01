@@ -12,7 +12,7 @@ package keygamep3;
  */
 public enum SpelToetsCode() {
     
-    SpelToetsCode
+    
 }
     
 
