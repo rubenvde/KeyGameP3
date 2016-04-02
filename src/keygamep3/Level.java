@@ -10,7 +10,6 @@ import java.awt.event.*;
 import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.Math.round;
-import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
@@ -37,14 +36,11 @@ public class Level extends JFrame{
     public Level() {
         loadLevel();
  
-        //dimensie = new Dimensie(8,5); <- wordt nu uit level gehaald
         testCells = new JLabel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
         setLayout(new BorderLayout());
-        
-        //speelVeld = new Veld[][];
         
         creëerVeld();
         creëerSpeler();
@@ -60,6 +56,7 @@ public class Level extends JFrame{
         paneelLevel = new JPanel();
         paneelLevel.setLayout(new GridLayout(dimensie.getY(), dimensie.getX(), 0, 0));
         paneelLevel.setBackground(Color.BLACK);
+        paneelLevel.setOpaque(false);
         
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
