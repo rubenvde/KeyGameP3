@@ -33,4 +33,9 @@ public class Dimensie {
     public void setY(int y){
         this.y = y;
     }
+    
+    public void setDimensieReset(){
+        this.x = 0;
+        this.y = 0;
+    }
 }
