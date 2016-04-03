@@ -15,22 +15,33 @@ public enum SpelToetsCode {
     
     //Omhoog, Omlaag, Rechts, links;
     
-    Omhoog(KeyEvent.VK_UP),
-    Omlaag(KeyEvent.VK_DOWN),
-    Rechts(KeyEvent.VK_RIGHT),
-    Links(KeyEvent.VK_LEFT),
+    OMHOOG(KeyEvent.VK_UP),
+    OMLAAG(KeyEvent.VK_DOWN),
+    RECHTS(KeyEvent.VK_RIGHT),
+    LINKS(KeyEvent.VK_LEFT),
     
-    SleutelOppakken(KeyEvent.VK_SPACE);
+    SLEUTELOPPAKKEN(KeyEvent.VK_SPACE);
     
-    private int keyCode;
+    int keyCode;
     
-    private SpelToetsCode(int keyCode) {
+    
+    SpelToetsCode(int keyCode) {
         
         this.keyCode = keyCode;
     }
     
     public int getKeyCode() {
         return keyCode;
-    }}
+    }
+    
+    public static SpelToetsCode getEnumNaam(int toetsCode) {
+        for (SpelToetsCode c : values()) {
+            if (c.getKeyCode() == toetsCode) {
+                return c;
+            }
+        }
+        return null;
+    }
+}
     
 

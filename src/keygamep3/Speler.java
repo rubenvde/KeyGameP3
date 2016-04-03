@@ -19,9 +19,9 @@ public class Speler {
     private ImageIcon spelerAfbeelding;
     private JButton player;
     
-    public Speler(int x, int y) { // <-- eigenlijk Dimensie positie
+    public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie positie
         //this.positie = positie;
-        this.positie = new Dimensie(x, y);
+        this.positie = spelerPos;
         this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
         player = new JButton();
         player.setIcon(this.spelerAfbeelding);

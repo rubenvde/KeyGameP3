@@ -71,9 +71,6 @@ public class Level extends JFrame{
     }
     
     private void creëerSpeler(){
-        
-        //speler = new Speler(spelerPos); <- voorheen
-        speler = new Speler(0, 0); // <- nu, hardcoded alleen om te testen
         spelerPos = speler.getPositie();
 
         testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getPlayerAfbeelding());
@@ -135,20 +132,22 @@ public class Level extends JFrame{
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler.getPlayerAfbeelding());
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].repaint();
             
-            switch(code){
-                case KeyEvent.VK_UP:
+            SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
+
+            switch(c){
+                case OMHOOG:
                     spelerBewegen.setY(spelerBewegen.getY()-1);
                     break;
                 
-                case KeyEvent.VK_DOWN:
+                case OMLAAG:
                     spelerBewegen.setY(spelerBewegen.getY()+1);
                     break;
                     
-                case KeyEvent.VK_LEFT:
+                case LINKS:
                     spelerBewegen.setX(spelerBewegen.getX()-1);
                     break;
                     
-                case KeyEvent.VK_RIGHT:
+                case RECHTS:
                     spelerBewegen.setX(spelerBewegen.getX()+1);
                     break;
             }
@@ -255,8 +254,8 @@ public class Level extends JFrame{
             if(veld[i].equals("P")) {
                 //Doe iets
                 speelVeld[tempY][tempX] = new Veld();
-                speler = new Speler(tempX, tempY);//<- even veranderd voor de test
-                //speler = new Speler(new Dimensie(tempX, tempY));
+                //speler = new Speler(tempX, tempY);//<- even veranderd voor de test
+                speler = new Speler(new Dimensie(tempX, tempY));
             }
             else if(veld[i].equals("E")) {
                 //Doe iets
