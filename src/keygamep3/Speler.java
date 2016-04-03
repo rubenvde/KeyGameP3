@@ -6,6 +6,7 @@
 package keygamep3;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -16,10 +17,17 @@ public class Speler {
     private Dimensie positie;
     private Sleutel zak;
     private ImageIcon spelerAfbeelding;
+    private JButton player;
     
-    public Speler(Dimensie positie) {
-        this.positie = positie;
+    public Speler(int x, int y) { // <-- eigenlijk Dimensie positie
+        //this.positie = positie;
+        this.positie = new Dimensie(x, y);
         this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
+        player = new JButton();
+        player.setIcon(this.spelerAfbeelding);
+        //player.setOpaque(false); we hebben een gif speler nodig!!
+        //player.setContentAreaFilled(false);
+        //player.setBorderPainted(false);
     }
     
     public Dimensie getPositie(){
@@ -37,6 +45,10 @@ public class Speler {
     
     public void setSleutel(Sleutel sleutel){
         this.zak = sleutel;
+    }
+    
+    public JButton getPlayerAfbeelding(){
+        return this.player;
     }
     
 }

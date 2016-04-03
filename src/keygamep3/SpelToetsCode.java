@@ -29,7 +29,7 @@ public enum SpelToetsCode {
         this.keyCode = keyCode;
     }
     
-    private int getKeyCode() {
+    public int getKeyCode() {
         return keyCode;
     }}
     

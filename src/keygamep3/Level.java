@@ -23,20 +23,18 @@ public class Level extends JFrame{
     private final int VAK_BREEDTE = 64;
     private final int VAK_HOOGTE = 64;
     
-    private Dimensie dimensie;
+    private Dimensie dimensie, spelerPos, spelerBewegen;
     private Speler speler;
     
-    private JPanel paneelKnoppen, paneelLevel;
-    private JButton startKnop, resetKnop;
+    private JPanel paneelKnoppen, paneelLevel, testCells[][];
+    private JButton resetKnop;
     
     private Veld[][] speelVeld;
-    
-    private JLabel [][] testCells;
 
     public Level() {
         loadLevel();
  
-        testCells = new JLabel[dimensie.getY()][dimensie.getX()];
+        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
@@ -60,18 +58,26 @@ public class Level extends JFrame{
         
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
-                testCells[i][j] = new JLabel();
+                testCells[i][j] = new JPanel();
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
-                    testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());
+                    //testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon()); <- Alleen voor testCells[][] = new JLabel();
+                    testCells[i][j].add(new JLabel(speelVeld[i][j].getSpelElementIcon()));
+                    testCells[i][j].setBackground(Color.red);
                 }
                 
                 paneelLevel.add(testCells[i][j]);
             }
         }
     }
+    
     private void creëerSpeler(){
-        Dimensie spelerPos = speler.getPositie();
-        //testCells[spelerPos.getY()][spelerPos.getX()] 
+        
+        //speler = new Speler(spelerPos); <- voorheen
+        speler = new Speler(0, 0); // <- nu, hardcoded alleen om te testen
+        spelerPos = speler.getPositie();
+
+        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getPlayerAfbeelding());
+        speler.getPlayerAfbeelding().addKeyListener(new verplaatsSpeler());
     }
     ///    
     /// Inner class
@@ -80,8 +86,9 @@ public class Level extends JFrame{
         @Override
         public void actionPerformed(ActionEvent event)
         {   
-            if(event.getSource() == resetKnop){// resetKnop
-                //zodra een level is gemaakt kan het getest worden.
+            if(event.getSource() == resetKnop){
+                reset();
+                System.out.println("TEST, gedrukt!");
             }
             revalidate();
             repaint();
@@ -104,16 +111,68 @@ public class Level extends JFrame{
         add(paneelKnoppen, BorderLayout.SOUTH);
     }
     
-    public void reset(){
-        
+    private void reset(){
+        spelerPos.setDimensieReset();
+        speler.setPositie(spelerPos);
+        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getPlayerAfbeelding());
+        //DEZE METHODE IS NOG IN ONTWIKKELING
     }
     
     public void bereiktEindveld(){
         
     }
+    //
+    // Inner Class verplaatsSpeler
+        class verplaatsSpeler implements KeyListener{
+         
+        @Override
+        public void keyPressed(KeyEvent event) {   
+            
+            int code = event.getKeyCode();
+            
+            spelerBewegen = speler.getPositie();
+            
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler.getPlayerAfbeelding());
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].repaint();
+            
+            switch(code){
+                case KeyEvent.VK_UP:
+                    spelerBewegen.setY(spelerBewegen.getY()-1);
+                    break;
+                
+                case KeyEvent.VK_DOWN:
+                    spelerBewegen.setY(spelerBewegen.getY()+1);
+                    break;
+                    
+                case KeyEvent.VK_LEFT:
+                    spelerBewegen.setX(spelerBewegen.getX()-1);
+                    break;
+                    
+                case KeyEvent.VK_RIGHT:
+                    spelerBewegen.setX(spelerBewegen.getX()+1);
+                    break;
+            }
+            if(spelerBewegen.getX()<0){spelerBewegen.setX(spelerBewegen.getX()+1);}
+            if(spelerBewegen.getX() == dimensie.getX()){spelerBewegen.setX(spelerBewegen.getX()-1);}
+            
+            if(spelerBewegen.getY()<0){spelerBewegen.setY(spelerBewegen.getY()+1);}
+            if(spelerBewegen.getY() == dimensie.getY()){spelerBewegen.setY(spelerBewegen.getY()-1);}
+            
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler.getPlayerAfbeelding());
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].revalidate();
+            speler.getPlayerAfbeelding().requestFocus();   
+        }
+        
+        @Override
+        public void keyTyped(KeyEvent event) {}
+
+        @Override
+        public void keyReleased(KeyEvent event) {} 
+        
+        }// EINDE INNER CLASS verplaatsSpeler
     
     public void verplaatsSpeler(){
-        
+       // deze methode is waarschijnlijk niet meer nodig....? 
     }
     
     public void spelerSleutelPakken(){
@@ -196,7 +255,8 @@ public class Level extends JFrame{
             if(veld[i].equals("P")) {
                 //Doe iets
                 speelVeld[tempY][tempX] = new Veld();
-                speler = new Speler(new Dimensie(tempX, tempY));
+                speler = new Speler(tempX, tempY);//<- even veranderd voor de test
+                //speler = new Speler(new Dimensie(tempX, tempY));
             }
             else if(veld[i].equals("E")) {
                 //Doe iets
