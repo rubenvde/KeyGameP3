@@ -90,11 +90,10 @@ public class Level extends JFrame{
     }
     
     private void creëerSpeler(){
-
         spelerPos = speler.getPositie();
         speler = new Speler(spelerPos);
-        testCells[speler.getY()][speler.getX()].add(speler);
-        speler.addKeyListener(new verplaatsSpeler());
+        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
+        speler.getSpelerLabel().addKeyListener(new verplaatsSpeler());
     }
     ///    
     /// Inner class
@@ -131,7 +130,7 @@ public class Level extends JFrame{
     private void reset(){
         spelerPos.setDimensieReset();
         speler.setPositie(spelerPos);
-        testCells[spelerPos.getY()][spelerPos.getX()].add(speler);
+        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
         //DEZE METHODE IS NOG IN ONTWIKKELING
     }
     
@@ -149,7 +148,7 @@ public class Level extends JFrame{
             
             spelerBewegen = speler.getPositie();
             
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler);
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler.getSpelerLabel());
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].repaint();
             
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
@@ -177,9 +176,9 @@ public class Level extends JFrame{
             if(spelerBewegen.getY()<0){spelerBewegen.setY(spelerBewegen.getY()+1);}
             if(spelerBewegen.getY() == dimensie.getY()){spelerBewegen.setY(spelerBewegen.getY()-1);}
             
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler);
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler.getSpelerLabel());
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].revalidate();
-            speler.requestFocus();   
+            speler.getSpelerLabel().requestFocus();   
         }
         
         @Override

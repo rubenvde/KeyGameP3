@@ -6,26 +6,28 @@
 package keygamep3;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
  * @author rubenvde
  */
-public class Speler extends JButton{
+public class Speler {
     
     private Dimensie positie;
     private Sleutel zak;
     private ImageIcon spelerAfbeelding;
+    private JLabel spelerLabel;
     
     public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie spelerPos
-        //this.positie = positie;
         this.positie = spelerPos;
+        spelerLabel = new JLabel();
         this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
-        this.setIcon(this.spelerAfbeelding);
-        //this.setOpaque(false); //we hebben een gif speler nodig!!
-        //this.setContentAreaFilled(false);
-        //this.setBorderPainted(false);
+        spelerLabel.setIcon(this.spelerAfbeelding);
+        
+        //spelerButton.setOpaque(false); //we hebben een gif speler nodig!!
+        //thispelerButtons.setContentAreaFilled(false);
+        //spelerButton.setBorderPainted(false);
     }
     
     public Dimensie getPositie(){
@@ -42,6 +44,10 @@ public class Speler extends JButton{
     
     public void setSleutel(Sleutel sleutel){
         this.zak = sleutel;
+    }
+    
+    public JLabel getSpelerLabel(){
+        return this.spelerLabel;
     }
     
 }
