@@ -14,20 +14,19 @@ import javax.swing.ImageIcon;
 public class Barricade extends SpelElement {
 
     private int pincode;
-    private Speler speler;
+    private Speler speler; // Nodig???
     private ImageIcon afbeelding;
 
     public Barricade(int pincode) {
         
         this.pincode = pincode;
-
-
     }
     
     @Override
     public ImageIcon getAfbeelding() {
         
         this.afbeelding = new ImageIcon("Plaatjes/doors.png");
+        this.afbeelding.setDescription("barricade");
         return afbeelding;
     }
 
@@ -37,12 +36,9 @@ public class Barricade extends SpelElement {
      * @return
      */
     @Override
-    public boolean isToegankelijk(int pincode) {
+    public boolean isToegankelijk(int pincode) { //<- waarom hebben we hier een pincode? 
+                                            // hieronder hebben we toch al een getPincode van Speler....
+        return this.pincode == pincode; //speler.getSleutel().getPincode(); <- is dit wel nodig?
         
-        if (this.pincode == speler.getSleutel().getPincode()) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

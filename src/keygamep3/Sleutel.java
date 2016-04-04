@@ -5,10 +5,6 @@
  */
 package keygamep3;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -24,15 +20,13 @@ public class Sleutel extends SpelElement {
     public Sleutel(int pincode) {
 
         this.pincode = pincode;
-        //this.afbeelding.getAfbeelding() = new ImageIcon("Plaatjes/sleutel.png");
-
     }
 
     @Override
     public ImageIcon getAfbeelding() {
             
         this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
-        
+        this.afbeelding.setDescription("sleutel");
         return afbeelding;
     }
 
@@ -42,7 +36,7 @@ public class Sleutel extends SpelElement {
     }
 
     @Override
-    public boolean isToegankelijk(int pincode) {
+    public boolean isToegankelijk(int pincode) { // is deze methode voor sleutel nodig?
 
         return true;
     }

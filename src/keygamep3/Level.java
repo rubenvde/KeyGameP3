@@ -26,7 +26,7 @@ public class Level extends JFrame{
     private Dimensie dimensie, spelerPos;
     private Speler speler;
     
-    private JPanel paneelKnoppen, paneelLevel, testCells[][];
+    private JPanel paneelKnoppen, paneelLevel, testCells[][]; 
     
     private JButton resetKnop;
     
@@ -145,36 +145,94 @@ public class Level extends JFrame{
          
         @Override
         public void keyPressed(KeyEvent event) {   
-
+            
+            SpelElement muur = new Muur(); //<- alleen om te testen of is het goed??
+            SpelElement barricade = new Barricade(1234); //<- alleen om te testen of is het goed??
+            
             int code = event.getKeyCode();
-            
-            
+
             testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
             testCells[spelerPos.getY()][spelerPos.getX()].repaint();
             
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
             switch(c){
                 case OMHOOG:
-                    spelerPos.setY(spelerPos.getY()-1);
+                    spelerPos.setY(spelerPos.getY() - 1);
+                    if(spelerPos.getY()<0){spelerPos.setY(spelerPos.getY()+1);}
+
+                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){ // als je dit niet gebruikt dan werkt het niet perfect
+                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
+                                                                                                                                 //zonder description herkent hij muur niet
+                            if(muur.isToegankelijk(22) == false){ //<-- waarom hebben we hiervoor een int code??
+                            spelerPos.setY(spelerPos.getY() + 1);
+                            }
+                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
+                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
+                            spelerPos.setY(spelerPos.getY() + 1);    
+                            }
+                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
+                        }
+                    }
                     break;
-                
+                    
                 case OMLAAG:
                     spelerPos.setY(spelerPos.getY()+1);
+                    if(spelerPos.getY() == dimensie.getY()){spelerPos.setY(spelerPos.getY()-1);}
+
+                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
+                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
+                            if(muur.isToegankelijk(22) == false){
+                            spelerPos.setY(spelerPos.getY() - 1);
+                            }
+                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
+                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
+                            spelerPos.setY(spelerPos.getY() - 1);    
+                            }
+                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
+                        }
+                    }
                     break;
                     
                 case LINKS:
                     spelerPos.setX(spelerPos.getX()-1);
+                    if(spelerPos.getX()<0){spelerPos.setX(spelerPos.getX()+1);}
+
+                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
+                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
+                            if(muur.isToegankelijk(22) == false){
+                            spelerPos.setX(spelerPos.getX() + 1);
+                            }
+                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
+                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
+                            spelerPos.setX(spelerPos.getX() + 1);    
+                            }
+                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
+                        }
+                    }
                     break;
                     
                 case RECHTS:
                     spelerPos.setX(spelerPos.getX()+1);
+                    if(spelerPos.getX() == dimensie.getX()){spelerPos.setX(spelerPos.getX()-1);}
+                    
+                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
+                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
+                            if(muur.isToegankelijk(22) == false){
+                            spelerPos.setX(spelerPos.getX() - 1);
+                            }
+                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
+                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
+                            spelerPos.setX(spelerPos.getX() - 1);    
+                            }
+                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
+                        }
+                    }
+                    break;
+                    
+                case SLEUTELOPPAKKEN:
+                    spelerSleutelPakken();
                     break;
             }
-            if(spelerPos.getX()<0){spelerPos.setX(spelerPos.getX()+1);}
-            if(spelerPos.getX() == dimensie.getX()){spelerPos.setX(spelerPos.getX()-1);}
-            
-            if(spelerPos.getY()<0){spelerPos.setY(spelerPos.getY()+1);}
-            if(spelerPos.getY() == dimensie.getY()){spelerPos.setY(spelerPos.getY()-1);}
             
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
             testCells[spelerPos.getY()][spelerPos.getX()].repaint();
@@ -188,12 +246,15 @@ public class Level extends JFrame{
         
         }// EINDE INNER CLASS verplaatsSpeler
     
-    public void verplaatsSpeler(){
-       // deze methode is waarschijnlijk niet meer nodig....? 
-    }
-    
     public void spelerSleutelPakken(){
-        
+        Sleutel sleutel = new Sleutel(1234); //<- hardcoded om de sleutel te testen
+        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
+            System.out.println("wat is dit: " + sleutel.getAfbeelding().getDescription());
+            if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(sleutel.getAfbeelding().getDescription())){
+                speler.setSleutel(sleutel);
+                speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
+            }            
+        }        
     }
     
     public static void main(String[] args) { // <-- Geen zorgen, dit is alleen voor mij :D
