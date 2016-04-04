@@ -15,8 +15,7 @@ import javax.swing.JButton;
 public class Speler extends JButton{
     
     private Dimensie positie;
-    private Sleutel sleutel;
-    private int zak;
+    private Sleutel zak;
     private ImageIcon spelerAfbeelding;
     
     public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie spelerPos
@@ -37,13 +36,12 @@ public class Speler extends JButton{
         this.positie = positie;
     }
     
-    public int getSleutel(){
-        this.zak = this.sleutel.getPincode();
-        return zak;
+    public Sleutel getSleutel(){
+        return this.zak;
     }
     
     public void setSleutel(Sleutel sleutel){
-        this.zak = sleutel.getPincode();
+        this.zak = sleutel;
     }
     
 }
