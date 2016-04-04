@@ -24,12 +24,10 @@ public class Speler {
         this.positie = spelerPos;
         spelerLabel = new JLabel();
         
-        this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
+        this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.gif");
         spelerLabel.setIcon(this.spelerAfbeelding);
         
-        //spelerButton.setOpaque(false); //we hebben een gif speler nodig!!
-        //spelerButtons.setContentAreaFilled(false);
-        //spelerButton.setBorderPainted(false);
+        spelerLabel.setOpaque(false); //we hebben een gif speler nodig!!
     }
     
     public Dimensie getPositie(){

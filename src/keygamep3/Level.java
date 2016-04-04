@@ -23,11 +23,11 @@ public class Level extends JFrame{
     private final int VAK_BREEDTE = 64;
     private final int VAK_HOOGTE = 64;
     
-    private Dimensie dimensie, spelerPos, spelerBewegen;
+    private Dimensie dimensie, spelerPos;
     private Speler speler;
     
-    private JPanel paneelKnoppen, paneelLevel;
-    private JPanel testCells[][];
+    private JPanel paneelKnoppen, paneelLevel, testCells[][];
+    
     private JButton resetKnop;
     
     private Veld[][] speelVeld;
@@ -64,7 +64,7 @@ public class Level extends JFrame{
         setLayout(new BorderLayout());
         
         creëerVeld();
-        //creëerSpeler();
+        creëerSpeler();
         paneelKnoppen();
         maakPaneel();
         
