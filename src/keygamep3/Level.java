@@ -46,6 +46,9 @@ public class Level extends JFrame{
         paneelKnoppen();
         maakPaneel();
         
+        this.setFocusable(true);
+        this.addKeyListener(new verplaatsSpeler());
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
@@ -94,7 +97,8 @@ public class Level extends JFrame{
         spelerPos = speler.getPositie();
         speler = new Speler(spelerPos);
         testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
-        speler.getSpelerLabel().addKeyListener(new verplaatsSpeler());
+        //speler.getSpelerLabel().addKeyListener(new verplaatsSpeler());
+        //addKeyListener(new verplaatsSpeler());
     }
     ///    
     /// Inner class
@@ -144,7 +148,7 @@ public class Level extends JFrame{
          
         @Override
         public void keyPressed(KeyEvent event) {   
-            
+            System.out.println("hoi");
             int code = event.getKeyCode();
             
             spelerBewegen = speler.getPositie();
@@ -178,7 +182,8 @@ public class Level extends JFrame{
             
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler.getSpelerLabel());
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].revalidate();
-            speler.getSpelerLabel().requestFocus();   
+            speler.getSpelerLabel().requestFocus(true);
+            //speler.getSpelerLabel().requestFocus();
         }
         
         @Override
