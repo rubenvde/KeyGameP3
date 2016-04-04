@@ -12,22 +12,21 @@ import javax.swing.JButton;
  *
  * @author rubenvde
  */
-public class Speler {
+public class Speler extends JButton{
     
     private Dimensie positie;
-    private Sleutel zak;
+    private Sleutel sleutel;
+    private int zak;
     private ImageIcon spelerAfbeelding;
-    private JButton player;
     
-    public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie positie
+    public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie spelerPos
         //this.positie = positie;
         this.positie = spelerPos;
         this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
-        player = new JButton();
-        player.setIcon(this.spelerAfbeelding);
-        //player.setOpaque(false); we hebben een gif speler nodig!!
-        //player.setContentAreaFilled(false);
-        //player.setBorderPainted(false);
+        this.setIcon(this.spelerAfbeelding);
+        //this.setOpaque(false); //we hebben een gif speler nodig!!
+        //this.setContentAreaFilled(false);
+        //this.setBorderPainted(false);
     }
     
     public Dimensie getPositie(){
@@ -39,16 +38,12 @@ public class Speler {
     }
     
     public int getSleutel(){
-        int zak = this.zak.getPincode();
+        this.zak = this.sleutel.getPincode();
         return zak;
     }
     
     public void setSleutel(Sleutel sleutel){
-        this.zak = sleutel;
-    }
-    
-    public JButton getPlayerAfbeelding(){
-        return this.player;
+        this.zak = sleutel.getPincode();
     }
     
 }

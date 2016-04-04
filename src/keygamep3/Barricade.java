@@ -46,7 +46,7 @@ public class Barricade extends SpelElement {
     @Override
     public boolean isToegankelijk(int pincode) {
         
-        if (pincode == speler.getSleutel()) {        //weet ff niet wat ik hier moet zetten omdat speler class nog niet gemaakt is
+        if (pincode == speler.getSleutel()) {
             return true;
         } else {
             return false;

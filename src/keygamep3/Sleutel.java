@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 public class Sleutel extends SpelElement {
 
     private int pincode;
+    
     private ImageIcon afbeelding;
 
     public Sleutel(int pincode) {
@@ -37,7 +38,7 @@ public class Sleutel extends SpelElement {
 
     public int getPincode() {
 
-        return pincode;
+        return this.pincode;
     }
 
     @Override

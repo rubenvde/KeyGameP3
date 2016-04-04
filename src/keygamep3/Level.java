@@ -26,7 +26,8 @@ public class Level extends JFrame{
     private Dimensie dimensie, spelerPos, spelerBewegen;
     private Speler speler;
     
-    private JPanel paneelKnoppen, paneelLevel, testCells[][];
+    private JPanel paneelKnoppen, paneelLevel;
+    private JLabel testCells[][];
     private JButton resetKnop;
     
     private Veld[][] speelVeld;
@@ -34,7 +35,7 @@ public class Level extends JFrame{
     public Level() {    //<- Deze methode is straks niet meer beschikbaar
         loadLevel();
  
-        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
+        testCells = new JLabel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
@@ -53,14 +54,14 @@ public class Level extends JFrame{
     public Level(String padNaarLevel) {
         loadLevel(padNaarLevel);
  
-        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
+        testCells = new JLabel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
         setLayout(new BorderLayout());
         
         creëerVeld();
-        creëerSpeler();
+        //creëerSpeler();
         paneelKnoppen();
         maakPaneel();
         
@@ -74,26 +75,26 @@ public class Level extends JFrame{
         paneelLevel.setLayout(new GridLayout(dimensie.getY(), dimensie.getX(), 0, 0));
         paneelLevel.setBackground(Color.BLACK);
         paneelLevel.setOpaque(false);
-        
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
-                testCells[i][j] = new JPanel();
+                testCells[i][j] = new JLabel();
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
-                    //testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon()); <- Alleen voor testCells[][] = new JLabel();
-                    testCells[i][j].add(new JLabel(speelVeld[i][j].getSpelElementIcon()));
-                    testCells[i][j].setBackground(Color.red);
+                    testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());
+                    testCells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    testCells[i][j].setBackground(Color.red); //<< om te zien of er gaten zijn in Label
                 }
-                
                 paneelLevel.add(testCells[i][j]);
             }
         }
+        creëerSpeler();
     }
     
     private void creëerSpeler(){
-        spelerPos = speler.getPositie();
 
-        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getPlayerAfbeelding());
-        speler.getPlayerAfbeelding().addKeyListener(new verplaatsSpeler());
+        spelerPos = speler.getPositie();
+        speler = new Speler(spelerPos);
+        testCells[speler.getY()][speler.getX()].add(speler);
+        speler.addKeyListener(new verplaatsSpeler());
     }
     ///    
     /// Inner class
@@ -130,7 +131,7 @@ public class Level extends JFrame{
     private void reset(){
         spelerPos.setDimensieReset();
         speler.setPositie(spelerPos);
-        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getPlayerAfbeelding());
+        testCells[spelerPos.getY()][spelerPos.getX()].add(speler);
         //DEZE METHODE IS NOG IN ONTWIKKELING
     }
     
@@ -148,7 +149,7 @@ public class Level extends JFrame{
             
             spelerBewegen = speler.getPositie();
             
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler.getPlayerAfbeelding());
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler);
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].repaint();
             
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
@@ -176,9 +177,9 @@ public class Level extends JFrame{
             if(spelerBewegen.getY()<0){spelerBewegen.setY(spelerBewegen.getY()+1);}
             if(spelerBewegen.getY() == dimensie.getY()){spelerBewegen.setY(spelerBewegen.getY()-1);}
             
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler.getPlayerAfbeelding());
+            testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler);
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].revalidate();
-            speler.getPlayerAfbeelding().requestFocus();   
+            speler.requestFocus();   
         }
         
         @Override
