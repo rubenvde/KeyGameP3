@@ -82,7 +82,6 @@ public class Level extends JFrame{
             for (int j = 0; j < dimensie.getX(); j++) {
                 testCells[i][j] = new JPanel();
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
-                    //testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());
                     testCells[i][j].add(new JLabel(speelVeld[i][j].getSpelElementIcon()));
                     testCells[i][j].setLayout(new GridLayout(0,1));
                     testCells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -97,8 +96,6 @@ public class Level extends JFrame{
         spelerPos = speler.getPositie();
         speler = new Speler(spelerPos);
         testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
-        //speler.getSpelerLabel().addKeyListener(new verplaatsSpeler());
-        //addKeyListener(new verplaatsSpeler());
     }
     ///    
     /// Inner class
@@ -148,42 +145,39 @@ public class Level extends JFrame{
          
         @Override
         public void keyPressed(KeyEvent event) {   
-            System.out.println("hoi");
+
             int code = event.getKeyCode();
             
-            spelerBewegen = speler.getPositie();
             
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].remove(speler.getSpelerLabel());
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].repaint();
+            testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
+            testCells[spelerPos.getY()][spelerPos.getX()].repaint();
             
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
             switch(c){
                 case OMHOOG:
-                    spelerBewegen.setY(spelerBewegen.getY()-1);
+                    spelerPos.setY(spelerPos.getY()-1);
                     break;
                 
                 case OMLAAG:
-                    spelerBewegen.setY(spelerBewegen.getY()+1);
+                    spelerPos.setY(spelerPos.getY()+1);
                     break;
                     
                 case LINKS:
-                    spelerBewegen.setX(spelerBewegen.getX()-1);
+                    spelerPos.setX(spelerPos.getX()-1);
                     break;
                     
                 case RECHTS:
-                    spelerBewegen.setX(spelerBewegen.getX()+1);
+                    spelerPos.setX(spelerPos.getX()+1);
                     break;
             }
-            if(spelerBewegen.getX()<0){spelerBewegen.setX(spelerBewegen.getX()+1);}
-            if(spelerBewegen.getX() == dimensie.getX()){spelerBewegen.setX(spelerBewegen.getX()-1);}
+            if(spelerPos.getX()<0){spelerPos.setX(spelerPos.getX()+1);}
+            if(spelerPos.getX() == dimensie.getX()){spelerPos.setX(spelerPos.getX()-1);}
             
-            if(spelerBewegen.getY()<0){spelerBewegen.setY(spelerBewegen.getY()+1);}
-            if(spelerBewegen.getY() == dimensie.getY()){spelerBewegen.setY(spelerBewegen.getY()-1);}
+            if(spelerPos.getY()<0){spelerPos.setY(spelerPos.getY()+1);}
+            if(spelerPos.getY() == dimensie.getY()){spelerPos.setY(spelerPos.getY()-1);}
             
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].add(speler.getSpelerLabel());
-            testCells[spelerBewegen.getY()][spelerBewegen.getX()].revalidate();
-            speler.getSpelerLabel().requestFocus(true);
-            //speler.getSpelerLabel().requestFocus();
+            testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
+            testCells[spelerPos.getY()][spelerPos.getX()].repaint();
         }
         
         @Override
