@@ -17,10 +17,16 @@ public class Veld {
     
     public Veld() {
         this.spelElement = null;
+        
     }
     
     public Veld(SpelElement spelElement) {
         this.spelElement = spelElement;
+    }
+    
+    public void verwijderSpelElement() {
+        
+        this.spelElement = null;
     }
     
     //Schrijf Spelelement
