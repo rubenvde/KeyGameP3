@@ -6,6 +6,7 @@
 package keygamep3;
 
 import javax.swing.ImageIcon;
+import java.awt.Image;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +17,8 @@ public class Speler {
     
     private Dimensie positie;
     private Sleutel zak;
-    private ImageIcon spelerAfbeelding;
+    private ImageIcon afbeelding, spelerAfbeelding;
+    private Image spelerImageConver, newspelerImage;
     private JLabel spelerLabel;
 
     
@@ -24,9 +26,8 @@ public class Speler {
         this.positie = spelerPos;
         spelerLabel = new JLabel();
         
-        this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.gif");
+        spelerAfbeelding = new ImageIcon("Plaatjes/speler.gif");
         spelerLabel.setIcon(this.spelerAfbeelding);
-        
         spelerLabel.setOpaque(false); //we hebben een gif speler nodig!!
     }
     
