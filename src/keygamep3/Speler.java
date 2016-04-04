@@ -18,15 +18,17 @@ public class Speler {
     private Sleutel zak;
     private ImageIcon spelerAfbeelding;
     private JLabel spelerLabel;
+
     
     public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie spelerPos
         this.positie = spelerPos;
         spelerLabel = new JLabel();
+        
         this.spelerAfbeelding = new ImageIcon("Plaatjes/speler.jpg");
         spelerLabel.setIcon(this.spelerAfbeelding);
         
         //spelerButton.setOpaque(false); //we hebben een gif speler nodig!!
-        //thispelerButtons.setContentAreaFilled(false);
+        //spelerButtons.setContentAreaFilled(false);
         //spelerButton.setBorderPainted(false);
     }
     

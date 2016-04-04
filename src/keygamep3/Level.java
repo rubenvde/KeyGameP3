@@ -27,7 +27,7 @@ public class Level extends JFrame{
     private Speler speler;
     
     private JPanel paneelKnoppen, paneelLevel;
-    private JLabel testCells[][];
+    private JPanel testCells[][];
     private JButton resetKnop;
     
     private Veld[][] speelVeld;
@@ -35,7 +35,7 @@ public class Level extends JFrame{
     public Level() {    //<- Deze methode is straks niet meer beschikbaar
         loadLevel();
  
-        testCells = new JLabel[dimensie.getY()][dimensie.getX()];
+        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
@@ -54,7 +54,7 @@ public class Level extends JFrame{
     public Level(String padNaarLevel) {
         loadLevel(padNaarLevel);
  
-        testCells = new JLabel[dimensie.getY()][dimensie.getX()];
+        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
         
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
@@ -77,16 +77,17 @@ public class Level extends JFrame{
         paneelLevel.setOpaque(false);
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
-                testCells[i][j] = new JLabel();
+                testCells[i][j] = new JPanel();
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
-                    testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());
+                    //testCells[i][j].setIcon(speelVeld[i][j].getSpelElementIcon());
+                    testCells[i][j].add(new JLabel(speelVeld[i][j].getSpelElementIcon()));
+                    testCells[i][j].setLayout(new GridLayout(0,1));
                     testCells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     testCells[i][j].setBackground(Color.red); //<< om te zien of er gaten zijn in Label
                 }
                 paneelLevel.add(testCells[i][j]);
             }
         }
-        creëerSpeler();
     }
     
     private void creëerSpeler(){
@@ -152,7 +153,6 @@ public class Level extends JFrame{
             testCells[spelerBewegen.getY()][spelerBewegen.getX()].repaint();
             
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
-
             switch(c){
                 case OMHOOG:
                     spelerBewegen.setY(spelerBewegen.getY()-1);
