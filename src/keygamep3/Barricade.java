@@ -27,10 +27,6 @@ public class Barricade extends SpelElement {
 
     }
     
-    public Speler getPincode() {
-        return speler;
-    }
-    
     @Override
     public ImageIcon getAfbeelding() {
         
