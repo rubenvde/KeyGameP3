@@ -24,9 +24,10 @@ public class Speler {
     
     public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie spelerPos
         this.positie = spelerPos;
-        spelerLabel = new JLabel();
         
         spelerAfbeelding = new ImageIcon("Plaatjes/speler.gif");
+        
+        spelerLabel = new JLabel();
         spelerLabel.setIcon(this.spelerAfbeelding);
         spelerLabel.setOpaque(false); //we hebben een gif speler nodig!!
     }
