@@ -149,6 +149,8 @@ public class Level extends JFrame{
             SpelElement muur = new Muur(); //<- alleen om te testen of is het goed??
             SpelElement barricade = new Barricade(1234); //<- alleen om te testen of is het goed??
             
+            
+            
             int code = event.getKeyCode();
 
             testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
@@ -199,16 +201,22 @@ public class Level extends JFrame{
 
                     if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() != null) {
                         if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Muur) {
-                            if(!muur.isToegankelijk(0)){
+                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(0)){
                             spelerPos.setX(spelerPos.getX() + 1);
                             }
                         }
                         
                         else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Barricade){
-                            if(!barricade.isToegankelijk(speler.getSleutel().getPincode())){
-                            spelerPos.setX(spelerPos.getX() + 1);    
+                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode())){
+                                System.out.println("barricade: " + speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode()));
+                                spelerPos.setX(spelerPos.getX() + 1);    
                             }
-                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
+                            else
+                            {
+                                System.out.println("barricade: " + speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode()));
+                            }
+                            
+                            //System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
                         }
                     }
                     break;
@@ -217,16 +225,15 @@ public class Level extends JFrame{
                     spelerPos.setX(spelerPos.getX()+1);
                     if(spelerPos.getX() == dimensie.getX()){spelerPos.setX(spelerPos.getX()-1);}
                     
-                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
-                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
-                            if(muur.isToegankelijk(22) == false){
+                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() != null){
+                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Muur) {
+                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(0)){
                             spelerPos.setX(spelerPos.getX() - 1);
                             }
-                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
-                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
+                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Barricade){
+                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode())){
                             spelerPos.setX(spelerPos.getX() - 1);    
                             }
-                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
                         }
                     }
                     break;
@@ -249,12 +256,14 @@ public class Level extends JFrame{
         }// EINDE INNER CLASS verplaatsSpeler
     
     public void spelerSleutelPakken(){
-        Sleutel sleutel = new Sleutel(1234); //<- hardcoded om de sleutel te testen
+        //Sleutel sleutel = new Sleutel(100); //<- hardcoded om de sleutel te testen
         if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
-            System.out.println("wat is dit: " + sleutel.getAfbeelding().getDescription());
-            if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(sleutel.getAfbeelding().getDescription())){
-                speler.setSleutel(sleutel);
+            
+            if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().getAfbeelding().getDescription())){
+                speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
+                System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
                 speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
+               
             }            
         }        
     }

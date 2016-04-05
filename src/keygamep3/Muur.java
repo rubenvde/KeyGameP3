@@ -23,7 +23,6 @@ public class Muur extends SpelElement {
     public ImageIcon getAfbeelding() {
         
         this.afbeelding = new ImageIcon("Plaatjes/muur.png");
-        this.afbeelding.setDescription("muur");
         return afbeelding;
     }
     

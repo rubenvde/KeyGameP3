@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Barricade extends SpelElement {
 
     private int pincode;
-    private Speler speler; // Nodig???
+    
     private ImageIcon afbeelding;
 
     public Barricade(int pincode) {
