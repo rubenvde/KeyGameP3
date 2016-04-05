@@ -157,8 +157,16 @@ public class Level extends JFrame{
             testCells[spelerPos.getY()][spelerPos.getX()].repaint();
             
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
+            int nextX = spelerPos.getX();
+            int nextY = spelerPos.getY();
             switch(c){
                 case OMHOOG:
+                    nextX = spelerPos.getX();
+                    nextY = spelerPos.getY() -1;
+                    
+                    
+                    
+                    /*
                     spelerPos.setY(spelerPos.getY() - 1);
                     if(spelerPos.getY()<0){spelerPos.setY(spelerPos.getY()+1);}
 
@@ -175,9 +183,14 @@ public class Level extends JFrame{
                             System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
                         }
                     }
+                            */
                     break;
                     
                 case OMLAAG:
+                    nextX = spelerPos.getX();
+                    nextY = spelerPos.getY() +1;
+                    
+                    /*
                     spelerPos.setY(spelerPos.getY()+1);
                     if(spelerPos.getY() == dimensie.getY()){spelerPos.setY(spelerPos.getY()-1);}
 
@@ -193,9 +206,14 @@ public class Level extends JFrame{
                             System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
                         }
                     }
+                            */
                     break;
                     
                 case LINKS:
+                    nextX = spelerPos.getX() -1;
+                    nextY = spelerPos.getY();
+                    
+                    /*
                     spelerPos.setX(spelerPos.getX()-1);
                     if(spelerPos.getX()<0){spelerPos.setX(spelerPos.getX()+1);}
 
@@ -219,9 +237,14 @@ public class Level extends JFrame{
                             //System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
                         }
                     }
+                            */
                     break;
                     
                 case RECHTS:
+                    nextX = spelerPos.getX() +1;
+                    nextY = spelerPos.getY();
+                    
+                    /*
                     spelerPos.setX(spelerPos.getX()+1);
                     if(spelerPos.getX() == dimensie.getX()){spelerPos.setX(spelerPos.getX()-1);}
                     
@@ -236,12 +259,18 @@ public class Level extends JFrame{
                             }
                         }
                     }
+                            */
                     break;
                     
                 case SLEUTELOPPAKKEN:
                     spelerSleutelPakken();
                     break;
             }
+            if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
+                spelerPos.setY(nextY);
+                spelerPos.setX(nextX);
+            }
+            
             
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
             testCells[spelerPos.getY()][spelerPos.getX()].repaint();
@@ -257,14 +286,13 @@ public class Level extends JFrame{
     
     public void spelerSleutelPakken(){
         //Sleutel sleutel = new Sleutel(100); //<- hardcoded om de sleutel te testen
-        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
+        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel ){
             
-            if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().getAfbeelding().getDescription())){
-                speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
-                System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
-                speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
-               
-            }            
+            
+            speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
+            System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
+            speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
+           
         }        
     }
     
