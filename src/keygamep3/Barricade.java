@@ -26,7 +26,6 @@ public class Barricade extends SpelElement {
     public ImageIcon getAfbeelding() {
         
         this.afbeelding = new ImageIcon("Plaatjes/doors.png");
-        this.afbeelding.setDescription("barricade");
         return afbeelding;
     }
 
@@ -36,9 +35,9 @@ public class Barricade extends SpelElement {
      * @return
      */
     @Override
-    public boolean isToegankelijk(int pincode) { //<- waarom hebben we hier een pincode? 
-                                            // hieronder hebben we toch al een getPincode van Speler....
-        return this.pincode == pincode; //speler.getSleutel().getPincode(); <- is dit wel nodig?
+    public boolean isToegankelijk(int pincode) { 
+                                           
+        return this.pincode == pincode;
         
     }
 }

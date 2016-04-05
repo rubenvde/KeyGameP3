@@ -26,7 +26,6 @@ public class Sleutel extends SpelElement {
     public ImageIcon getAfbeelding() {
             
         this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
-        this.afbeelding.setDescription("sleutel");
         return afbeelding;
     }
 

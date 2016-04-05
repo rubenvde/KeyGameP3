@@ -15,6 +15,7 @@ public class Veld {
     private boolean isEindveld; // <- nog overna denken
     private SpelElement spelElement;
     
+    
     public Veld() {
         this.spelElement = null;
 
@@ -27,6 +28,15 @@ public class Veld {
     public void verwijderSpelElement() {
         
         this.spelElement = null;
+    }
+    
+    public SpelElement getSpelElement() {
+        return spelElement;
+    }
+    
+    public boolean isBezetBaar(Speler speler){
+        
+        return false;
     }
     
     //Schrijf Spelelement

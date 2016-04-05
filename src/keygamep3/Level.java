@@ -197,13 +197,15 @@ public class Level extends JFrame{
                     spelerPos.setX(spelerPos.getX()-1);
                     if(spelerPos.getX()<0){spelerPos.setX(spelerPos.getX()+1);}
 
-                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
-                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
-                            if(muur.isToegankelijk(22) == false){
+                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() != null) {
+                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Muur) {
+                            if(!muur.isToegankelijk(0)){
                             spelerPos.setX(spelerPos.getX() + 1);
                             }
-                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
-                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
+                        }
+                        
+                        else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Barricade){
+                            if(!barricade.isToegankelijk(speler.getSleutel().getPincode())){
                             spelerPos.setX(spelerPos.getX() + 1);    
                             }
                             System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
