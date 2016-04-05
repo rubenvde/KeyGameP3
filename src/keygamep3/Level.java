@@ -65,8 +65,6 @@ public class Level extends JFrame{
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
                     testCells[i][j].add(new JLabel(speelVeld[i][j].getSpelElementIcon()));
                     testCells[i][j].setLayout(new GridLayout(0,1));
-                    testCells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                    testCells[i][j].setBackground(Color.red); //<< om te zien of er gaten zijn in Label
                 }
                 paneelLevel.add(testCells[i][j]);
             }
@@ -197,14 +195,7 @@ public class Level extends JFrame{
             testCells[spelerPos.getY()][spelerPos.getX()].removeAll();
             revalidate();
             repaint();
-            testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel());
-            
-            //Container parent = testCells[spelerPos.getY()][spelerPos.getX()].getParent();
-            //parent.(new JLabel());
-
-            revalidate();
-            repaint();
-        }        
+        } 
     }
     
     private void loadLevel(String pad) {
