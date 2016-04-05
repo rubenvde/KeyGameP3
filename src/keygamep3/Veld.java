@@ -35,8 +35,19 @@ public class Veld {
     }
     
     public boolean isBezetBaar(Speler speler){
-        
-        return false;
+        if(this.spelElement != null) {
+            if(speler.getSleutel() != null) {
+                return spelElement.isToegankelijk(speler.getSleutel().getPincode());
+            }
+            else
+            {
+                return spelElement.isToegankelijk(0);
+            }
+        }
+        else
+        {
+            return true;
+        }
     }
     
     //Schrijf Spelelement
