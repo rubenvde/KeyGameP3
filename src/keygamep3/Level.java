@@ -164,11 +164,13 @@ public class Level extends JFrame{
                     spelerSleutelPakken();
                     break;
             }
-            if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
+            
+            if(nextX >= 0 && nextX < dimensie.getX() && nextY >= 0 && nextY < dimensie.getY()){
+                if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
                 spelerPos.setY(nextY);
                 spelerPos.setX(nextX);
+                }
             }
-            
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
             testCells[spelerPos.getY()][spelerPos.getX()].repaint();
         }
@@ -186,7 +188,11 @@ public class Level extends JFrame{
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
             System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
             speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
-            //testCells[spelerPos.getY()][spelerPos.getX()].
+            Container parent = testCells[spelerPos.getY()][spelerPos.getX()].getParent();
+            parent.add(testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel()));
+            //testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel());
+            parent.validate();
+            parent.repaint();
         }        
     }
     
