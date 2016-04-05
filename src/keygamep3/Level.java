@@ -164,11 +164,16 @@ public class Level extends JFrame{
                     spelerSleutelPakken();
                     break;
             }
-            
+            //Controleer of speler niet uit het veld gaat
             if(nextX >= 0 && nextX < dimensie.getX() && nextY >= 0 && nextY < dimensie.getY()){
                 if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
                 spelerPos.setY(nextY);
                 spelerPos.setX(nextX);
+                }
+                
+                //Als speler zich op het eindveld gaat bevinden
+                if(speelVeld[nextY][nextX].getSpelElement() instanceof Eindveld) {
+                    System.out.println("GELUKT!");
                 }
             }
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
@@ -184,20 +189,21 @@ public class Level extends JFrame{
         }// EINDE INNER CLASS verplaatsSpeler
     
     public void spelerSleutelPakken(){
-        JLabel vervang = new JLabel();
-        vervang.setText("YES!");
+        
         if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel ){
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
             System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
             speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
-            //testCells[spelerPos.getY()][spelerPos.getX()].add(vervang);
+            testCells[spelerPos.getY()][spelerPos.getX()].removeAll();
+            revalidate();
+            repaint();
+            testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel());
             
             //Container parent = testCells[spelerPos.getY()][spelerPos.getX()].getParent();
-            //parent.remove(testCells[spelerPos.getY()][spelerPos.getX()]);
-            
-            //testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel());
-            //revalidate();
-            //repaint();
+            //parent.(new JLabel());
+
+            revalidate();
+            repaint();
         }        
     }
     
@@ -278,8 +284,8 @@ public class Level extends JFrame{
             }
             else if(veld[i].equals("E")) {
                 //Doe iets
-                speelVeld[tempY][tempX] = new Veld();
-                System.out.println("Eindveld nog niet geïmplementeerd");
+                speelVeld[tempY][tempX] = new Veld(new Eindveld());
+                //System.out.println("Eindveld nog niet geïmplementeerd");
             }
             else if(veld[i].equals("M")) {
                 speelVeld[tempY][tempX] = new Veld(new Muur());
