@@ -184,15 +184,20 @@ public class Level extends JFrame{
         }// EINDE INNER CLASS verplaatsSpeler
     
     public void spelerSleutelPakken(){
+        JLabel vervang = new JLabel();
+        vervang.setText("YES!");
         if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel ){
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
             System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
             speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
-            Container parent = testCells[spelerPos.getY()][spelerPos.getX()].getParent();
-            parent.add(testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel()));
+            //testCells[spelerPos.getY()][spelerPos.getX()].add(vervang);
+            
+            //Container parent = testCells[spelerPos.getY()][spelerPos.getX()].getParent();
+            //parent.remove(testCells[spelerPos.getY()][spelerPos.getX()]);
+            
             //testCells[spelerPos.getY()][spelerPos.getX()].add(new JLabel());
-            parent.validate();
-            parent.repaint();
+            //revalidate();
+            //repaint();
         }        
     }
     
