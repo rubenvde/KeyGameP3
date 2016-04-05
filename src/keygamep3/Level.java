@@ -31,28 +31,6 @@ public class Level extends JFrame{
     private JButton resetKnop;
     
     private Veld[][] speelVeld;
-
-    public Level() {    //<- Deze methode is straks niet meer beschikbaar
-        loadLevel();
- 
-        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
-        
-        setTitle("LevelGrid");
-        setSize(VAK_BREEDTE*dimensie.getX(), (VAK_HOOGTE*dimensie.getY()) + 52);
-        setLayout(new BorderLayout());
-        
-        creëerVeld();
-        creëerSpeler();
-        paneelKnoppen();
-        maakPaneel();
-        
-        this.setFocusable(true);
-        this.addKeyListener(new verplaatsSpeler());
-        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setVisible(true);
-    }
     
     public Level(String padNaarLevel) {
         loadLevel(padNaarLevel);
@@ -67,6 +45,9 @@ public class Level extends JFrame{
         creëerSpeler();
         paneelKnoppen();
         maakPaneel();
+        
+        this.setFocusable(true);
+        this.addKeyListener(new verplaatsSpeler());
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -205,121 +186,8 @@ public class Level extends JFrame{
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
             System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
             speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
-           
+            //testCells[spelerPos.getY()][spelerPos.getX()].
         }        
-    }
-    
-    public static void main(String[] args) { // <-- Geen zorgen, dit is alleen voor mij :D
-        
-        Level level = new Level();
-    }
-    
-    private void loadLevel() {  //<- Is straks niet meer aan te roepen
-        // The name of the file to open.
-        String file = new String();
-        
-        try {
-            FileReader reader = new FileReader("temp.txt");
-            int character;
-            while ((character = reader.read()) != -1) {
-                file += (char) character;
-            }
-            reader.close();
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        //File is opgehaald nu filteren
-        
-        // Veld dimentie scheiden van veld
-        String[] dOfV = file.split(",veld:");
-        
-        // Dimenties scheiden
-        String[] dimenties = dOfV[0].split(",");
-        
-        int x = 0;
-        int y = 0;
-        //Haal de x en y op
-        for(int i = 0; i < dimenties.length; i++) {
-            if(dimenties[i].startsWith("x:")) {
-                String[] xSplit = dimenties[i].split(":");
-                if(xSplit.length > 1) {
-                    x = Integer.parseInt(xSplit[1]);
-                }
-                else
-                {
-                    System.out.println("Whoops error! Er klopt iets niet met de indeling");
-                    return;
-                }
-            }
-            else if(dimenties[i].startsWith("y:")) {
-                String[] ySplit = dimenties[i].split(":");
-                if(ySplit.length > 1) {
-                    y = Integer.parseInt(ySplit[1]);
-                }
-                else
-                {
-                    System.out.println("Whoops error! Er klopt iets niet met de indeling");
-                    return;
-                }
-            }
-            else {
-                
-                System.out.println("Huh? Iets extra's? Error! " + dimenties[i]);
-            }
-        }
-        //Zet dimensie
-        dimensie = new Dimensie(x,y);
-        //x en y zijn nu opgenomen nu het veld
-        String[] veld = dOfV[1].split(",");
-        
-        speelVeld = new Veld[y][x];
-        
-        for(int i = 0; i < veld.length; i++) {
-            int tempY = round(i / y);
-            int tempX = i % x;
-            speelVeld[tempY][tempX] = new Veld();
-            
-            //Als er een P staat
-            if(veld[i].equals("P")) {
-                //Doe iets
-                speelVeld[tempY][tempX] = new Veld();
-                //speler = new Speler(tempX, tempY);//<- even veranderd voor de test
-                speler = new Speler(new Dimensie(tempX, tempY));
-            }
-            else if(veld[i].equals("E")) {
-                //Doe iets
-                speelVeld[tempY][tempX] = new Veld();
-                System.out.println("Eindveld nog niet geïmplementeerd");
-            }
-            else if(veld[i].equals("M")) {
-                speelVeld[tempY][tempX] = new Veld(new Muur());
-            }
-            else if(veld[i].startsWith("B")) {
-                //krijg value in ()
-                int pincode = 0;
-                Matcher m = Pattern.compile("\\(([^)]+)\\)").matcher(veld[i]);
-                while(m.find()) {
-                    pincode = Integer.parseInt(m.group(1));   
-                }
-                speelVeld[tempY][tempX] = new Veld(new Barricade(pincode));
-            }
-            else if(veld[i].startsWith("S")) {
-                //krijg value in ()
-                int pincode = 0;
-                Matcher m = Pattern.compile("\\(([^)]+)\\)").matcher(veld[i]);
-                while(m.find()) {
-                    pincode = Integer.parseInt(m.group(1));   
-                }
-                speelVeld[tempY][tempX] = new Veld(new Sleutel(pincode));
-            }
-            else if(veld[i].equals("X")) {
-                //Speelveld is leeg
-                speelVeld[tempY][tempX] = new Veld();
-            }
-            
-        }
     }
     
     private void loadLevel(String pad) {
