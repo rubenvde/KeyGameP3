@@ -167,7 +167,8 @@ public class Level extends JFrame{
                 if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
                     //Als er een barricade komt
                     if(speelVeld[nextY][nextX].getSpelElement() instanceof Barricade) {
-                        
+                        speelVeld[nextY][nextX].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
+                        testCells[nextY][nextX].removeAll();
                     }
                     
                     spelerPos.setY(nextY);
