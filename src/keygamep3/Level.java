@@ -165,8 +165,13 @@ public class Level extends JFrame{
             //Controleer of speler niet uit het veld gaat
             if(nextX >= 0 && nextX < dimensie.getX() && nextY >= 0 && nextY < dimensie.getY()){
                 if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
-                spelerPos.setY(nextY);
-                spelerPos.setX(nextX);
+                    //Als er een barricade komt
+                    if(speelVeld[nextY][nextX].getSpelElement() instanceof Barricade) {
+                        
+                    }
+                    
+                    spelerPos.setY(nextY);
+                    spelerPos.setX(nextX);
                 }
                 
                 //Als speler zich op het eindveld gaat bevinden
