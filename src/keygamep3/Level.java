@@ -164,102 +164,24 @@ public class Level extends JFrame{
                     nextX = spelerPos.getX();
                     nextY = spelerPos.getY() -1;
                     
-                    
-                    
-                    /*
-                    spelerPos.setY(spelerPos.getY() - 1);
-                    if(spelerPos.getY()<0){spelerPos.setY(spelerPos.getY()+1);}
-
-                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){ // als je dit niet gebruikt dan werkt het niet perfect
-                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
-                                                                                                                                 //zonder description herkent hij muur niet
-                            if(muur.isToegankelijk(22) == false){ //<-- waarom hebben we hiervoor een int code??
-                            spelerPos.setY(spelerPos.getY() + 1);
-                            }
-                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
-                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
-                            spelerPos.setY(spelerPos.getY() + 1);    
-                            }
-                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
-                        }
-                    }
-                            */
                     break;
                     
                 case OMLAAG:
                     nextX = spelerPos.getX();
                     nextY = spelerPos.getY() +1;
                     
-                    /*
-                    spelerPos.setY(spelerPos.getY()+1);
-                    if(spelerPos.getY() == dimensie.getY()){spelerPos.setY(spelerPos.getY()-1);}
-
-                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() instanceof ImageIcon){
-                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(muur.getAfbeelding().getDescription())){
-                            if(muur.isToegankelijk(22) == false){
-                            spelerPos.setY(spelerPos.getY() - 1);
-                            }
-                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon().getDescription().equals(barricade.getAfbeelding().getDescription())){
-                            if(barricade.isToegankelijk(speler.getSleutel().getPincode()) == false){
-                            spelerPos.setY(spelerPos.getY() - 1);    
-                            }
-                            System.out.println("barricade: " + barricade.isToegankelijk(speler.getSleutel().getPincode()));
-                        }
-                    }
-                            */
                     break;
                     
                 case LINKS:
                     nextX = spelerPos.getX() -1;
                     nextY = spelerPos.getY();
                     
-                    /*
-                    spelerPos.setX(spelerPos.getX()-1);
-                    if(spelerPos.getX()<0){spelerPos.setX(spelerPos.getX()+1);}
-
-                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() != null) {
-                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Muur) {
-                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(0)){
-                            spelerPos.setX(spelerPos.getX() + 1);
-                            }
-                        }
-                        
-                        else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Barricade){
-                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode())){
-                                System.out.println("barricade: " + speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode()));
-                                spelerPos.setX(spelerPos.getX() + 1);    
-                            }
-                            else
-                            {
-                                System.out.println("barricade: " + speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode()));
-                            }
-                            
-                            //System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
-                        }
-                    }
-                            */
                     break;
                     
                 case RECHTS:
                     nextX = spelerPos.getX() +1;
                     nextY = spelerPos.getY();
                     
-                    /*
-                    spelerPos.setX(spelerPos.getX()+1);
-                    if(spelerPos.getX() == dimensie.getX()){spelerPos.setX(spelerPos.getX()-1);}
-                    
-                    if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElementIcon() != null){
-                        if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Muur) {
-                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(0)){
-                            spelerPos.setX(spelerPos.getX() - 1);
-                            }
-                        }else if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Barricade){
-                            if(!speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement().isToegankelijk(speler.getSleutel().getPincode())){
-                            spelerPos.setX(spelerPos.getX() - 1);    
-                            }
-                        }
-                    }
-                            */
                     break;
                     
                 case SLEUTELOPPAKKEN:
@@ -270,7 +192,6 @@ public class Level extends JFrame{
                 spelerPos.setY(nextY);
                 spelerPos.setX(nextX);
             }
-            
             
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
             testCells[spelerPos.getY()][spelerPos.getX()].repaint();
