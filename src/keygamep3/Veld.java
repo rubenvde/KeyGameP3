@@ -35,17 +35,21 @@ public class Veld {
     }
     
     public boolean isBezetBaar(Speler speler){
+        
         if(this.spelElement != null) {
             if(speler.getSleutel() != null) {
+                //Als speler een sleutel heeft dan kan stuur die mee
                 return spelElement.isToegankelijk(speler.getSleutel().getPincode());
             }
             else
             {
+                //Als speler geen sleutel heeft dan stuur dan 0 mee
                 return spelElement.isToegankelijk(0);
             }
         }
         else
         {
+            //Als spelElement een gang is waar door gelopen kan worden
             return true;
         }
     }
