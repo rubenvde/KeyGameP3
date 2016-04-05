@@ -145,12 +145,7 @@ public class Level extends JFrame{
          
         @Override
         public void keyPressed(KeyEvent event) {   
-            
-            SpelElement muur = new Muur(); //<- alleen om te testen of is het goed??
-            SpelElement barricade = new Barricade(1234); //<- alleen om te testen of is het goed??
-            
-            
-            
+         
             int code = event.getKeyCode();
 
             testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
@@ -206,10 +201,7 @@ public class Level extends JFrame{
         }// EINDE INNER CLASS verplaatsSpeler
     
     public void spelerSleutelPakken(){
-        //Sleutel sleutel = new Sleutel(100); //<- hardcoded om de sleutel te testen
         if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel ){
-            
-            
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
             System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
             speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
