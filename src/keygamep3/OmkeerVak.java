@@ -22,7 +22,7 @@ public class OmkeerVak extends SpelElement {
     @Override
     public ImageIcon getAfbeelding() {
             
-        this.afbeelding = new ImageIcon("Plaatjes/sleutel.gif");
+        this.afbeelding = new ImageIcon("Plaatjes/omkeervak.png");
         return afbeelding;
     }
 

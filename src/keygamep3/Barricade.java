@@ -26,7 +26,7 @@ public class Barricade extends SpelElement {
     @Override
     public ImageIcon getAfbeelding() {
         
-        this.afbeelding = new ImageIcon("Plaatjes/doors.png");
+        this.afbeelding = new ImageIcon("Plaatjes/barricade.png");
         return afbeelding;
     }
     
