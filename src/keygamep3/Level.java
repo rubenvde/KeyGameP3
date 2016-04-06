@@ -30,9 +30,12 @@ public class Level extends JFrame{
     
     private JButton resetKnop;
     
+    private String padNaarLevel;
+    
     private Veld[][] speelVeld;
     
     public Level(String padNaarLevel) {
+        this.padNaarLevel = padNaarLevel;
         loadLevel(padNaarLevel);
  
         testCells = new JPanel[dimensie.getY()][dimensie.getX()];
@@ -92,7 +95,7 @@ public class Level extends JFrame{
         public void actionPerformed(ActionEvent event)
         {   
             if(event.getSource() == resetKnop){
-                reset();
+                resetLevel();
                 System.out.println("TEST, gedrukt!");
             }
             revalidate();
@@ -116,15 +119,17 @@ public class Level extends JFrame{
         add(paneelKnoppen, BorderLayout.SOUTH);
     }
     
-    private void reset(){
-        /*
-        spelerPos.setDimensieReset();
-        speler.setPositie(spelerPos);
-        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
-                */
+    protected void resetLevel(){
         
-        
-        //DEZE METHODE IS NOG IN ONTWIKKELING
+        for (int i = 0; i < dimensie.getY(); i++) {
+            for (int j = 0; j < dimensie.getX(); j++) {
+               speelVeld[i][j].verwijderSpelElement();
+               testCells[i][j].removeAll();
+            }
+        }
+        dispose();
+        paneelLevel.setVisible(false);
+        Level l = new Level(padNaarLevel);
     }
     
     public void bereiktEindveld(){
@@ -173,6 +178,7 @@ public class Level extends JFrame{
                     
                 case SLEUTELOPPAKKEN:
                     spelerSleutelPakken();
+                    
                     break;
             }
             //Controleer of speler niet uit het veld gaat
@@ -205,6 +211,16 @@ public class Level extends JFrame{
         
         }// EINDE INNER CLASS verplaatsSpeler
     
+    //Aangemaakt voor JUNIT testing
+    public Speler getSpeler(){
+        return this.speler;
+    }    
+    //Aangemaakt voor JUNIT testing
+    public Veld[][] getSpeelVeld(){
+        return this.speelVeld;
+    }
+        
+        
     public void spelerSleutelPakken(){
         
         if(speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel ){

@@ -20,15 +20,14 @@ public class Speler {
     private JLabel spelerLabel;
 
     
-    public Speler(Dimensie spelerPos) { // <-- eigenlijk Dimensie spelerPos
+    public Speler(Dimensie spelerPos) {
         this.positie = spelerPos;
         
         this.zak = new Sleutel(0); // zonder dit kan hij over Barricade lopen, wat niet de bedoeling is
         
         spelerAfbeelding = new ImageIcon("Plaatjes/speler.gif");
         
-        spelerLabel = new JLabel();
-        spelerLabel.setIcon(this.spelerAfbeelding);
+        spelerLabel = new JLabel(this.spelerAfbeelding);
         spelerLabel.setOpaque(false);
     }
     
