@@ -141,29 +141,12 @@ public class Level extends JFrame {
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
             int nextX = spelerPos.getX();
             int nextY = spelerPos.getY();
-            int lastY = spelerPos.getY() + 2;
-            /*
-             if (speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak) {
-             switch (c) {
-             case OMHOOG:
-             nextX = spelerPos.getX();
-             for(int i = 1; i < 5; i++) {
-             nextY = spelerPos.getY() + i;
-             }
-             break;
-             }
-
-             } else {*/
             switch (c) {
 
                 case OMHOOG:
                     nextX = spelerPos.getX();
                     if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
-
                         nextY = spelerPos.getY() + 1;
-                            //nextY = nextY + 1;
-                        //if (spelerPos.getY() < 5) {
-                        //nextY = spelerPos.getY() + 1;
                     } else {
                         nextY = spelerPos.getY() - 1;
                     }
@@ -174,8 +157,7 @@ public class Level extends JFrame {
                     nextX = spelerPos.getX();
                     if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
                         nextY = spelerPos.getY() - 1;
-                    }
-                    else {
+                    } else {
                         nextY = spelerPos.getY() + 1;
                     }
 
@@ -184,8 +166,7 @@ public class Level extends JFrame {
                 case LINKS:
                     if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
                         nextX = spelerPos.getX() + 1;
-                    }
-                    else {
+                    } else {
                         nextX = spelerPos.getX() - 1;
                     }
                     nextY = spelerPos.getY();
@@ -195,8 +176,7 @@ public class Level extends JFrame {
                 case RECHTS:
                     if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
                         nextX = spelerPos.getX() - 1;
-                    }
-                    else {
+                    } else {
                         nextX = spelerPos.getX() + 1;
                     }
                     nextY = spelerPos.getY();

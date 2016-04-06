@@ -33,8 +33,7 @@ public class OmkeerVak extends SpelElement {
     }
 
     @Override
-    public boolean isToegankelijk(int pincode) { // is deze methode voor sleutel nodig?
-
+    public boolean isToegankelijk(int pincode) { 
         return true;
     }
     
