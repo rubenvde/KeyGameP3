@@ -185,7 +185,10 @@ public class Level extends JFrame{
                 
                 //Als speler zich op het eindveld gaat bevinden
                 if(speelVeld[nextY][nextX].getSpelElement() instanceof Eindveld) {
-                    System.out.println("GELUKT!");
+                    //JButton eindVeldBereikt = new JButton("Gelukt");
+                    JOptionPane.showMessageDialog(null, "Klik op deze knop om het volgende level te kiezen", "Gefeliciteerd!", JOptionPane.PLAIN_MESSAGE);
+                    setVisible(false);
+                    //System.out.println("GELUKT!");
                 }
             }
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
