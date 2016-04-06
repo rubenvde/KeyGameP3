@@ -14,14 +14,8 @@ import javax.swing.ImageIcon;
 public class Eindveld extends SpelElement {
     
     private ImageIcon afbeelding;
-    private boolean isEindveld;
     
     public Eindveld() {
-        
-    }
-    
-    public boolean isEindveld() {
-        return true;
         
     }
     
