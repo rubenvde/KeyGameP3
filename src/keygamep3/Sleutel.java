@@ -6,6 +6,9 @@
 package keygamep3;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+import javax.swing.JLabel;
 
 /**
  *
@@ -25,7 +28,7 @@ public class Sleutel extends SpelElement {
     @Override
     public ImageIcon getAfbeelding() {
             
-        this.afbeelding = new ImageIcon("Plaatjes/sleutel.gif");
+        this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
         return afbeelding;
     }
 
@@ -39,6 +42,24 @@ public class Sleutel extends SpelElement {
     public boolean isToegankelijk(int pincode) { // is deze methode voor sleutel nodig?
 
         return true;
+    }
+    
+    public static void main(String[] args) {
+         Sleutel sleutels = new Sleutel(0);
+        JLabel sleutel = new JLabel();
+        sleutel.setIcon(sleutels.getAfbeelding());
+        
+        JFrame frame = new JFrame();
+        
+        frame.setTitle("LevelGrid");
+       
+       
+        frame.setSize(300, 200);
+         
+        frame.add(sleutel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setVisible(true);
     }
 
 }
