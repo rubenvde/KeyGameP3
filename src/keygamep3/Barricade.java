@@ -28,6 +28,11 @@ public class Barricade extends SpelElement {
         this.afbeelding = new ImageIcon("Plaatjes/doors.png");
         return afbeelding;
     }
+    
+    public int getPincode() {
+
+        return this.pincode;
+    }
 
     /**
      *

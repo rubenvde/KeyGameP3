@@ -29,6 +29,7 @@ public class Sleutel extends SpelElement {
         return afbeelding;
     }
 
+    @Override
     public int getPincode() {
 
         return this.pincode;

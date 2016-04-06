@@ -32,4 +32,9 @@ public class Muur extends SpelElement {
         return false;
     }
     
+    @Override
+    public int getPincode(){
+        return 0;
+    }
+    
 }

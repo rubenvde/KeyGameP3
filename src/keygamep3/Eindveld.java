@@ -34,4 +34,7 @@ public class Eindveld extends SpelElement {
         return true;
     }
     
+    public int getPincode() {
+        return 0;
+    }
 }
