@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
  * @author rubenvde
  */
 public class Veld {
-    private boolean isEindveld; // <- nog overna denken
     private SpelElement spelElement;
     
     
