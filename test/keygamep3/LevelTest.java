@@ -47,7 +47,7 @@ public class LevelTest {
         System.out.println("isToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
-        Veld[][] speelVeld = instance.getSpeelveld();
+        Veld[][] speelVeld = instance.getSpeelVeld();
         
         assertEquals("Sleutel is toegankelijk" , true,speelVeld[2][3].isBezetBaar(speler));
 
@@ -59,16 +59,17 @@ public class LevelTest {
         System.out.println("isToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
-        Veld[][] speelVeld = instance.getSpeelveld();
+        Veld[][] speelVeld = instance.getSpeelVeld();
         
         assertEquals("Muur is NIET toegankelijk" , false,speelVeld[0][1].isBezetBaar(speler)); 
     }
+    
     @Test
     public void testIsToegankelijkBarricade() {
         System.out.println("isToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
-        Veld[][] speelVeld = instance.getSpeelveld();
+        Veld[][] speelVeld = instance.getSpeelVeld();
         
         assertEquals("Barricade is gesloten" , false,speelVeld[1][1].isBezetBaar(speler));
         
