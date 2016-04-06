@@ -63,16 +63,14 @@ public class Level extends JFrame{
             for (int j = 0; j < dimensie.getX(); j++) {
                 testCells[i][j] = new JPanel();
                 if(speelVeld[i][j].getSpelElementIcon() != null) {
-                    
+                    testCells[i][j].setLayout(new OverlayLayout(testCells[i][j]));
                    
                     
                     if(speelVeld[i][j].getSpelElement() instanceof Sleutel || speelVeld[i][j].getSpelElement() instanceof Barricade) {
                         JLabel label = new JLabel("" + speelVeld[i][j].getSpelElement().getPincode());
-                        label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
                         testCells[i][j].add(label);
                     }
                     JLabel vak = new JLabel(speelVeld[i][j].getSpelElementIcon());
-                    vak.setAlignmentX(JLabel.CENTER_ALIGNMENT);
                      testCells[i][j].add(vak);
                     //testCells[i][j].setLayout(new GridLayout(0,1));
                 }
