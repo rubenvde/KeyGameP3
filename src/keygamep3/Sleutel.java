@@ -25,7 +25,7 @@ public class Sleutel extends SpelElement {
     @Override
     public ImageIcon getAfbeelding() {
             
-        this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
+        this.afbeelding = new ImageIcon("Plaatjes/sleutel.gif");
         return afbeelding;
     }
 
