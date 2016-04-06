@@ -17,30 +17,29 @@ import static org.junit.Assert.*;
  * @author Ruben
  */
 public class LevelTest {
-    
+
     public LevelTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    
     /**
-     * Test of IsToegankelijk method, of class Level
-     * Controlleer of speler de sleutel op kan pakken.
+     * Test of IsToegankelijk method, of class Level Controlleer of speler de
+     * sleutel op kan pakken.
      */
     @Test
     public void testIsToegankelijkSleutel() {
@@ -48,32 +47,49 @@ public class LevelTest {
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
         Veld[][] speelVeld = instance.getSpeelVeld();
-        
-        assertEquals("Sleutel is toegankelijk" , true,speelVeld[2][3].isBezetBaar(speler));
+
+        assertEquals("Sleutel is toegankelijk", true, speelVeld[2][3].isBezetBaar(speler));
 
         // TODO review the generated test code and remove the default call to fail.
     }
-    
+
     @Test
     public void testIsToegankelijkMuur() {
         System.out.println("isToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
         Veld[][] speelVeld = instance.getSpeelVeld();
-        
-        assertEquals("Muur is NIET toegankelijk" , false,speelVeld[0][1].isBezetBaar(speler)); 
+
+        assertEquals("Muur is NIET toegankelijk", false, speelVeld[0][1].isBezetBaar(speler));
     }
-    
+
     @Test
     public void testIsToegankelijkBarricade() {
         System.out.println("isToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
         Veld[][] speelVeld = instance.getSpeelVeld();
-        
-        assertEquals("Barricade is gesloten" , false,speelVeld[1][1].isBezetBaar(speler));
-        
+
+        assertEquals("Barricade is gesloten", false, speelVeld[1][1].isBezetBaar(speler));
+
         speler.setSleutel(new Sleutel(100));
+
+        assertEquals("Barricade is geopend", true, speelVeld[1][1].isBezetBaar(speler));
+    }
+    
+    @Test
+    public void testIsSpelerInVeld() {
+        System.out.println("IsInVeld");
+        Level instance = new Level("temp.txt");
+        Speler speler = instance.getSpeler();
         
-        assertEquals("Barricade is geopend" , true,speelVeld[1][1].isBezetBaar(speler));
-}}
+
+        assertEquals("Speler is buiten het speelveld aan de linkerkant", false, instance.isInVeld(new Dimensie(-1, 2)));
+        
+        assertEquals("Speler is buiten het speelveld aan de rechterkant", false, instance.isInVeld(new Dimensie( 20, 2)));
+
+        speler.setSleutel(new Sleutel(100));
+
+        assertEquals("Speler is in het speelveld", true, instance.isInVeld(new Dimensie( 1, 2)));
+    }
+}
