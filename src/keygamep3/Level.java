@@ -182,7 +182,7 @@ public class Level extends JFrame{
                     break;
             }
             //Controleer of speler niet uit het veld gaat
-            if(nextX >= 0 && nextX < dimensie.getX() && nextY >= 0 && nextY < dimensie.getY()){
+            if(isInVeld(new Dimensie(nextX,nextY))){
                 if(speelVeld[nextY][nextX].isBezetBaar(speler)) {
                     //Als er een barricade komt
                     if(speelVeld[nextY][nextX].getSpelElement() instanceof Barricade) {
@@ -220,6 +220,15 @@ public class Level extends JFrame{
         return this.speelVeld;
     }
         
+    public boolean isInVeld(Dimensie pos) {
+        if(pos.getX() >= 0 && pos.getX() < dimensie.getX() && pos.getY() >= 0 && pos.getY() < dimensie.getY()){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
         
     public void spelerSleutelPakken(){
         
