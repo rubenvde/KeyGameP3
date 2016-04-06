@@ -302,22 +302,8 @@ public class Level extends JFrame{
             int tempX = i % x;
             speelVeld[tempY][tempX] = new Veld();
             
-            //Als er een P staat
-            if(veld[i].equals("P")) {
-                //Doe iets
-                speelVeld[tempY][tempX] = new Veld();
-                //speler = new Speler(tempX, tempY);//<- even veranderd voor de test
-                speler = new Speler(new Dimensie(tempX, tempY));
-            }
-            else if(veld[i].equals("E")) {
-                //Doe iets
-                speelVeld[tempY][tempX] = new Veld(new Eindveld());
-                //System.out.println("Eindveld nog niet geïmplementeerd");
-            }
-            else if(veld[i].equals("M")) {
-                speelVeld[tempY][tempX] = new Veld(new Muur());
-            }
-            else if(veld[i].startsWith("B")) {
+            
+            if(veld[i].startsWith("B")) {
                 //krijg value in ()
                 int pincode = 0;
                 Matcher m = Pattern.compile("\\(([^)]+)\\)").matcher(veld[i]);
@@ -335,10 +321,35 @@ public class Level extends JFrame{
                 }
                 speelVeld[tempY][tempX] = new Veld(new Sleutel(pincode));
             }
-            else if(veld[i].equals("X")) {
-                //Speelveld is leeg
-                speelVeld[tempY][tempX] = new Veld();
+            else {
+                switch(veld[i]) {
+                case "P":
+                    //Voeg nieuw veld toe met speler daarop
+                    speelVeld[tempY][tempX] = new Veld();
+                    speler = new Speler(new Dimensie(tempX, tempY));
+                    break;
+                case "E":
+                    //Creeer veld met eindveld als spelelement
+                    speelVeld[tempY][tempX] = new Veld(new Eindveld());
+                    break;
+                case "O":
+                    //Creeer veld met omkeervak als spelelement
+                    speelVeld[tempY][tempX] = new Veld(new OmkeerVak());
+                    break;
+                case "M":
+                    //Creeer veld met muur als spelelement
+                    speelVeld[tempY][tempX] = new Veld(new Muur());
+                    break;
+                case "X":
+                    //Creeer een nieuw veld
+                    speelVeld[tempY][tempX] = new Veld();
+                    break;
+                default:
+                    System.out.println("Error. Het level file klopt niet is namelijk:" + veld[i]);
+                    break;
+                }
             }
+            
             
         }
     }
