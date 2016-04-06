@@ -6,8 +6,6 @@
 package keygamep3;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +30,7 @@ public class Barricade extends SpelElement {
         return afbeelding;
     }
     
+    @Override
     public int getPincode() {
 
         return this.pincode;
@@ -51,25 +50,5 @@ public class Barricade extends SpelElement {
         }else{
             return true;
         }
-    }
-    
-    public static void main(String[] args) {
-        
-         Barricade barricade = new Barricade(0);
-        JLabel barricades = new JLabel();
-        barricades.setIcon(barricade.getAfbeelding());
-        
-        JFrame frame = new JFrame();
-        
-        frame.setTitle("LevelGrid");
-       
-       
-        frame.setSize(300, 200);
-         
-        frame.add(barricades);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        
     }
 }

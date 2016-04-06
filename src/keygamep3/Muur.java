@@ -21,14 +21,12 @@ public class Muur extends SpelElement {
     
     @Override
     public ImageIcon getAfbeelding() {
-        
         this.afbeelding = new ImageIcon("Plaatjes/muur.png");
         return afbeelding;
     }
     
     @Override
-    public boolean isToegankelijk(int pincode) { // Waarom heeft muur pincode....is dit nodig?
-        
+    public boolean isToegankelijk(int pincode) {
         return false;
     }
     
