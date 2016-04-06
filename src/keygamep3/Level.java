@@ -117,14 +117,19 @@ public class Level extends JFrame{
     }
     
     private void reset(){
+        /*
         spelerPos.setDimensieReset();
         speler.setPositie(spelerPos);
         testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
+                */
+        
+        
         //DEZE METHODE IS NOG IN ONTWIKKELING
     }
     
     public void bereiktEindveld(){
-        
+        JOptionPane.showMessageDialog(null, "Klik op deze knop om het volgende level te kiezen", "Gefeliciteerd!", JOptionPane.PLAIN_MESSAGE);
+        setVisible(false);
     }
     //
     // Inner Class verplaatsSpeler
@@ -185,10 +190,7 @@ public class Level extends JFrame{
                 
                 //Als speler zich op het eindveld gaat bevinden
                 if(speelVeld[nextY][nextX].getSpelElement() instanceof Eindveld) {
-                    //JButton eindVeldBereikt = new JButton("Gelukt");
-                    JOptionPane.showMessageDialog(null, "Klik op deze knop om het volgende level te kiezen", "Gefeliciteerd!", JOptionPane.PLAIN_MESSAGE);
-                    setVisible(false);
-                    //System.out.println("GELUKT!");
+                    bereiktEindveld();
                 }
             }
             testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
