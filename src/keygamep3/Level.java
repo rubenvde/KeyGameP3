@@ -120,15 +120,7 @@ public class Level extends JFrame{
     }
     
     protected void resetLevel(){
-        
-        for (int i = 0; i < dimensie.getY(); i++) {
-            for (int j = 0; j < dimensie.getX(); j++) {
-               speelVeld[i][j].verwijderSpelElement();
-               testCells[i][j].removeAll();
-            }
-        }
         dispose();
-        paneelLevel.setVisible(false);
         Level l = new Level(padNaarLevel);
     }
     

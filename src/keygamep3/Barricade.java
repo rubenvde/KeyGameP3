@@ -45,7 +45,7 @@ public class Barricade extends SpelElement {
     public boolean isToegankelijk(int pincode) { 
                                        
         if(this.pincode != pincode){
-            JOptionPane.showMessageDialog(null, "Deze sleutel past niet!", "", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "U heeft de juiste sleutel nodig om de barricade te openen!", "", JOptionPane.WARNING_MESSAGE);
             return false;
         }else{
             return true;
