@@ -10,49 +10,57 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- *
- * @author Ruben
+ * Klas Spel, implementeert ActionListener
+ * @author Ruben, Koray, Ruben
  */
 
 public class Spel implements ActionListener{
     
-    private final int FRAME_WIDTH = 300; // Hier moeten we nog over nadenken
-    private final int FRAME_HEIGTH = 100;// Hier moeten we nog over nadenken
+    private final int FRAME_BREEDTE = 300;
+    private final int FRAME_HOOGTE = 100;
     
     private JFrame frame;
 
     private JButton openLevel;
     
+    /**
+     * Constructor Spel
+     */
     public Spel(){
         frame = new JFrame();
         frame.setTitle("KeyGame");
-        frame.setSize(FRAME_WIDTH, FRAME_HEIGTH);
+        frame.setSize(FRAME_BREEDTE, FRAME_HOOGTE);
         
-        openLevel = new JButton("Open Level");
+        openLevel = new JButton("Open level");
+        openLevel.setBackground(Color.BLACK);
         openLevel.addActionListener(this);
         
         frame.add(openLevel);
-        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        //frame.setAlwaysOnTop(true);
         frame.setVisible(true);
     }
+    
+    /**
+     * Implementatie van de abstracte methode van ActionListener
+     * @param event 
+     */
     @Override
-        public void actionPerformed(ActionEvent event)
-        {   
+        public void actionPerformed(ActionEvent event) {   
             if(event.getSource() == openLevel){// StartKnop
                 FileDialog fd = new FileDialog(frame, "Test", FileDialog.LOAD);
                 fd.setDirectory("levels/");
                 fd.setVisible(true);
                 startLevel(fd.getDirectory() + fd.getFile());
-                //add(levels[0].getLevel(), BorderLayout.CENTER);//hier komt een level van de classe Level
             }
             frame.revalidate();
             frame.repaint();
         }
     
-
+    /**
+     * Deze methode start de gevraagde level
+     * @param pad 
+     */    
     public void startLevel(String pad) {
         Level l = new Level(pad);
     }
