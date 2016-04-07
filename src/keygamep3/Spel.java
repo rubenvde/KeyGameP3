@@ -21,7 +21,7 @@ public class Spel{
     
     private JFrame frame;
 
-    JButton openLevel;
+    private JButton openLevel;
     
     public Spel(){
         frame = new JFrame();
