@@ -38,10 +38,15 @@ public enum SpelToetsCode {
     public int getToetsCode() {
         return toetsCode;
     }
-    
+    /**
+     * Zoek de juiste Toetscode
+     * @param toetsCode
+     * @return 
+     */
     public static SpelToetsCode getEnumNaam(int toetsCode) {
         for (SpelToetsCode c : values()) {
             if (c.getToetsCode() == toetsCode) {
+                //Als de juiste Toetscode is gevonden return die dan
                 return c;
             }
         }
