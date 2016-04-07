@@ -14,7 +14,7 @@ import javax.swing.*;
  * @author Ruben
  */
 
-public class Spel{
+public class Spel implements ActionListener{
     
     private final int FRAME_WIDTH = 300; // Hier moeten we nog over nadenken
     private final int FRAME_HEIGTH = 100;// Hier moeten we nog over nadenken
@@ -29,7 +29,7 @@ public class Spel{
         frame.setSize(FRAME_WIDTH, FRAME_HEIGTH);
         
         openLevel = new JButton("Open Level");
-        openLevel.addActionListener(new KnopActie());
+        openLevel.addActionListener(this);
         
         frame.add(openLevel);
         
@@ -38,11 +38,7 @@ public class Spel{
         //frame.setAlwaysOnTop(true);
         frame.setVisible(true);
     }
-    
-    // Inner Class knopActie voor de knoppen Start en Reset
-    class KnopActie implements ActionListener{
-          
-        @Override
+    @Override
         public void actionPerformed(ActionEvent event)
         {   
             if(event.getSource() == openLevel){// StartKnop
@@ -55,7 +51,7 @@ public class Spel{
             frame.revalidate();
             frame.repaint();
         }
-    }
+    
 
     public void startLevel(String pad) {
         Level l = new Level(pad);

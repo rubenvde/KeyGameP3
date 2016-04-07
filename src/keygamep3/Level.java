@@ -18,7 +18,7 @@ import javax.swing.*;
  *
  * @author Ruben, Koray, Ruben
  */
-public class Level extends JFrame implements KeyListener {
+public class Level extends JFrame implements KeyListener,ActionListener {
 
     private final int VAK_BREEDTE = 64;
     private final int VAK_HOOGTE = 64;
@@ -89,24 +89,19 @@ public class Level extends JFrame implements KeyListener {
         speler = new Speler(spelerPos);
         testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
     }
-
-    ///    
-    /// Inner class
-    class ResetActie implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent event) {
-            if (event.getSource() == resetKnop) {
-                resetLevel();
-            }
-            revalidate();
-            repaint();
+    
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == resetKnop) {
+            resetLevel();
         }
+        revalidate();
+        repaint();
     }
 
     private void paneelKnoppen() {
         resetKnop = new JButton("Reset");
-        resetKnop.addActionListener(new ResetActie());
+        resetKnop.addActionListener(this);
     }
 
     private void maakPaneel() {
