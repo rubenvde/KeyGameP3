@@ -38,8 +38,7 @@ public class LevelTest {
     }
 
     /**
-     * Test of IsToegankelijk method, of class Level Controlleer of speler de
-     * sleutel op kan pakken.
+     * Test of speler op het veld met een Sleutel kan komen
      */
     @Test
     public void testIsToegankelijkSleutel() {
@@ -50,7 +49,9 @@ public class LevelTest {
 
         assertEquals("Sleutel is toegankelijk", true, speelVeld[2][3].isBezetBaar(speler));
     }
-
+    /**
+     * Test of speler op het veld met een muur kan komen
+     */
     @Test
     public void testIsToegankelijkMuur() {
         System.out.println("muurIsToegankelijk");
@@ -60,7 +61,9 @@ public class LevelTest {
 
         assertEquals("Muur is NIET toegankelijk", false, speelVeld[0][1].isBezetBaar(speler));
     }
-
+    /**
+     * Test of Speler op het veld met een barricade kan komen als hij geen sleutel heeft
+     */
     @Test
     public void testIsNietToegankelijkBarricade() {
         System.out.println("barricadeIsNietToegankelijk");
@@ -70,7 +73,9 @@ public class LevelTest {
 
         assertEquals("Barricade is gesloten", false, speelVeld[1][1].isBezetBaar(speler));
     }
-
+    /**
+     * Test of Speler op het met veld met barricade kan komen als hij de juiste sleutel heeft
+     */
     @Test
     public void testIsToegankelijkBarricade() {
         System.out.println("barricadeIsToegankelijk");
@@ -82,7 +87,9 @@ public class LevelTest {
 
         assertEquals("Barricade is geopend", true, speelVeld[1][1].isBezetBaar(speler));
     }
-
+    /**
+     * Test of Speler zich buiten het level kan bevinden
+     */
     @Test
     public void testIsSpelerBuitenVeldLinks() {
         System.out.println("spelerIsBuitenVeldLinks");
@@ -91,7 +98,9 @@ public class LevelTest {
 
         assertEquals("Speler is buiten het speelveld aan de linkerkant", false, instance.isInVeld(new Dimensie(-1, 2)));
     }
-
+    /**
+     * Test of Speler zich buiten het level kan bevinden
+     */
     @Test
     public void testIsSpelerBuitenVeldRechts() {
         System.out.println("spelerIsBuitenVeldRechts");
@@ -100,7 +109,9 @@ public class LevelTest {
 
         assertEquals("Speler is buiten het speelveld aan de rechterkant", false, instance.isInVeld(new Dimensie(20, 2)));
     }
-
+    /**
+     * Test of Speler zich in het veld kan bevinden
+     */
     @Test
     public void testIsSpelerInVeld() {
         System.out.println("spelerIsInVeld");

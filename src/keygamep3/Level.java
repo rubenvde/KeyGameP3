@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import javax.swing.*;
 
 /**
- *
+ * Eem spel bestaat uit meerdere levels
  * @author Ruben, Koray, Ruben
  */
 public class Level extends JFrame implements KeyListener, ActionListener {
@@ -37,7 +37,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     private int aantalStappenOmgekeerd = 0;
 
     /**
-     *
+     * Constructor van Level
      * @param padNaarLevel
      */
     public Level(String padNaarLevel) {
@@ -57,31 +57,33 @@ public class Level extends JFrame implements KeyListener, ActionListener {
 
         this.setFocusable(true);
         this.addKeyListener(this);
-
+        //Sluit alleen het frame als er op kruisje wordt gedrukt
         dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         setResizable(false);
         setVisible(true);
     }
 
     /**
-     *
+     * Maakt een visuele weergave van speelVeld
      */
     private void creëerVeld() {
         paneelLevel = new JPanel();
         paneelLevel.setLayout(new GridLayout(dimensie.getY(), dimensie.getX(), 0, 0));
         paneelLevel.setBackground(Color.BLACK);
         paneelLevel.setOpaque(false);
+        //Loop door een 2d array om velden te creeeren
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
                 levelCells[i][j] = new JPanel();
                 if (speelVeld[i][j].getSpelElementIcon() != null) {
                     levelCells[i][j].setLayout(new OverlayLayout(levelCells[i][j]));
-                    //Hier vertellen wat hij doet!
+                    //Wanneer het spelelement een sleutel of barricade is moet er een pincode worden weergegeven
                     if (speelVeld[i][j].getSpelElement() instanceof Sleutel || speelVeld[i][j].getSpelElement() instanceof Barricade) {
                         JLabel label = new JLabel("" + speelVeld[i][j].getSpelElement().getPincode());
                         label.setOpaque(false);
                         levelCells[i][j].add(label);
                     }
+                    //Zet het spelelement icoontje in de velden
                     JLabel vak = new JLabel(speelVeld[i][j].getSpelElementIcon());
                     levelCells[i][j].add(vak);
                 }
@@ -91,7 +93,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Zet een speler op het veld
      */
     private void creëerSpeler() {
         spelerPos = speler.getPositie();
@@ -100,11 +102,12 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Reageert op buttons die geklikt worden
      * @param event
      */
     @Override
     public void actionPerformed(ActionEvent event) {
+        //Als de knop een resetknop is, herstart het level
         if (event.getSource() == resetKnop) {
             resetLevel();
         }
@@ -113,7 +116,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Voegt de resetknop aan het paneel toe
      */
     private void paneelKnoppen() {
         resetKnop = new JButton("Reset");
@@ -121,7 +124,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Creeer het paneel waar het level en de reset knop worden toegevoegd
      */
     private void maakPaneel() {
         paneelKnoppen = new JPanel();
@@ -133,7 +136,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Reset het level
      */
     private void resetLevel() {
         dispose();
@@ -141,7 +144,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Wordt uigevoerd wanneer het eindveld is bereikt
      */
     private void bereiktEindveld() {
         JOptionPane.showMessageDialog(null, "Klik op deze knop om het volgende level te kiezen", "Gefeliciteerd!", JOptionPane.PLAIN_MESSAGE);
@@ -149,7 +152,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Afhandeling van de toetsen die ingedrukt worden
      * @param event
      */
     @Override
@@ -242,7 +245,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }//Einde keyPressed
 
     /**
-     *
+     * Moet in interface KeyListener maar doen wij niks mee
      * @param event
      */
     @Override
@@ -250,7 +253,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Moet in interface KeyListener maar doen wij niks mee
      * @param event
      */
     @Override
@@ -276,7 +279,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Controlleer of dimensie in veld zit
      * @param pos
      * @return
      */
@@ -289,11 +292,14 @@ public class Level extends JFrame implements KeyListener, ActionListener {
     }
 
     /**
-     *
+     * Zorgt ervoor dat sleutel wordt opgepakt en aan speler wordt gegeven
      */
     private void spelerSleutelPakken() {
+        //Controlleer of speler op een sleutel staat
         if (speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel) {
+            //Verplaats sleutel naar zak van speler
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
+            //Verwijder de sleutel van het veld
             speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement();
             levelCells[spelerPos.getY()][spelerPos.getX()].removeAll();
             revalidate();
@@ -306,9 +312,9 @@ public class Level extends JFrame implements KeyListener, ActionListener {
      * @param pad
      */
     private void loadLevel(String pad) {
-        // The name of the file to open.
+        // Hier wordt het txt file als een string opgeslagen.
         String file = new String();
-
+        //Probeer het txt file te vinden en te lezen
         try {
             FileReader reader = new FileReader(pad);
             int character;
