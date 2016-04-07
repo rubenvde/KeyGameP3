@@ -34,7 +34,7 @@ public class Level extends JFrame {
 
     private Veld[][] speelVeld;
     
-    private int teller = 0;
+    private int aantalStappenOmgekeerd = 0;
 
     public Level(String padNaarLevel) {
         this.padNaarLevel = padNaarLevel;
@@ -143,20 +143,18 @@ public class Level extends JFrame {
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
             int nextX = spelerPos.getX();
             int nextY = spelerPos.getY();
+            
+            //Als speler op omkeervak staat
+            if ((speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof OmkeerVak)) {
+                aantalStappenOmgekeerd = 5;
+            }
             //Controlleer of de keypress wel echt omhoog,omlaag,links,rechts of spatiebalk is
             if(c != null) {
                 switch (c) {
                 
                 case OMHOOG:
                     nextX = spelerPos.getX();
-                    if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
-                        //for(int i = 0; i < dimensie.getY();i++){
-                           // for(int j = 0; j < dimensie.getX(); j++){
-                                //speelVeld[i][j];
-                          //  }
-                       // }    
-                       // teller++;
-                        System.out.println("teller" + teller);
+                    if (aantalStappenOmgekeerd > 0) {
                         nextY = spelerPos.getY() + 1;
                         
                     } else {
@@ -167,7 +165,7 @@ public class Level extends JFrame {
 
                 case OMLAAG:
                     nextX = spelerPos.getX();
-                    if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
+                    if (aantalStappenOmgekeerd > 0) {
                         nextY = spelerPos.getY() - 1;
                     } else {
                         nextY = spelerPos.getY() + 1;
@@ -176,7 +174,7 @@ public class Level extends JFrame {
                     break;
 
                 case LINKS:
-                    if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
+                    if (aantalStappenOmgekeerd > 0) {
                         nextX = spelerPos.getX() + 1;
                     } else {
                         nextX = spelerPos.getX() - 1;
@@ -186,7 +184,7 @@ public class Level extends JFrame {
                     break;
 
                 case RECHTS:
-                    if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
+                    if (aantalStappenOmgekeerd > 0) {
                         nextX = spelerPos.getX() - 1;
                     } else {
                         nextX = spelerPos.getX() + 1;
@@ -202,6 +200,8 @@ public class Level extends JFrame {
                 }
             }
             
+            
+            
             //Controleer of speler niet uit het veld gaat
             if (isInVeld(new Dimensie(nextX, nextY))) {
                 if (speelVeld[nextY][nextX].isBezetBaar(speler)) {
@@ -210,9 +210,17 @@ public class Level extends JFrame {
                         speelVeld[nextY][nextX].verwijderSpelElement();
                         testCells[nextY][nextX].removeAll();
                     }
-
+                    
+                    
+                    //Zet spelerpositie naar nextX, nextY
                     spelerPos.setY(nextY);
                     spelerPos.setX(nextX);
+                    
+                    //Als er omgekeerde stappen gemaakt zijn, doe -1
+                    if (aantalStappenOmgekeerd > 0) {
+                        aantalStappenOmgekeerd--;
+                    }
+                    
                 }
 
                 //Als speler zich op het eindveld gaat bevinden
