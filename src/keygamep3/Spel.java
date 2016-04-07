@@ -32,7 +32,6 @@ public class Spel implements ActionListener{
         frame.setSize(FRAME_BREEDTE, FRAME_HOOGTE);
         
         openLevel = new JButton("Open level");
-        openLevel.setBackground(Color.BLACK);
         openLevel.addActionListener(this);
         
         frame.add(openLevel);
