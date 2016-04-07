@@ -98,7 +98,6 @@ public class Level extends JFrame {
         public void actionPerformed(ActionEvent event) {
             if (event.getSource() == resetKnop) {
                 resetLevel();
-                System.out.println("TEST, gedrukt!");
             }
             revalidate();
             repaint();
@@ -128,7 +127,8 @@ public class Level extends JFrame {
         JOptionPane.showMessageDialog(null, "Klik op deze knop om het volgende level te kiezen", "Gefeliciteerd!", JOptionPane.PLAIN_MESSAGE);
         setVisible(false);
     }
-
+    
+    
     //
     // Inner Class verplaatsSpeler
     class verplaatsSpeler implements KeyListener {
@@ -150,7 +150,12 @@ public class Level extends JFrame {
                 case OMHOOG:
                     nextX = spelerPos.getX();
                     if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
-                        teller++;
+                        //for(int i = 0; i < dimensie.getY();i++){
+                           // for(int j = 0; j < dimensie.getX(); j++){
+                                //speelVeld[i][j];
+                          //  }
+                       // }    
+                       // teller++;
                         System.out.println("teller" + teller);
                         nextY = spelerPos.getY() + 1;
                         
