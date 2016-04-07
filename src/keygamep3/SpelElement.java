@@ -8,17 +8,30 @@ package keygamep3;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Ruben
+ * SpelElement is een abstracte superklasse
+ * @author Ruben, Koray, Ruben
  */
 public abstract class SpelElement {
 
     private ImageIcon afbeelding;
     
+    /**
+     * 
+     * @return 
+     */
     public abstract ImageIcon getAfbeelding();
-        
+    
+    /**
+     * 
+     * @param pincode
+     * @return 
+     */
     public abstract boolean isToegankelijk(int pincode);
     
+    /**
+     * 
+     * @return 
+     */
     public abstract int getPincode();
 
 }

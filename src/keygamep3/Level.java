@@ -18,29 +18,33 @@ import javax.swing.*;
  *
  * @author Ruben, Koray, Ruben
  */
-public class Level extends JFrame implements KeyListener,ActionListener {
-
+public class Level extends JFrame implements KeyListener, ActionListener {
+ 
     private final int VAK_BREEDTE = 64;
     private final int VAK_HOOGTE = 64;
 
     private Dimensie dimensie, spelerPos;
     private Speler speler;
 
-    private JPanel paneelKnoppen, paneelLevel, testCells[][];
+    private JPanel paneelKnoppen, paneelLevel, levelCells[][];
 
     private JButton resetKnop;
 
     private String padNaarLevel;
 
     private Veld[][] speelVeld;
-    
+
     private int aantalStappenOmgekeerd = 0;
 
+    /**
+     *
+     * @param padNaarLevel
+     */
     public Level(String padNaarLevel) {
         this.padNaarLevel = padNaarLevel;
         loadLevel(padNaarLevel);
 
-        testCells = new JPanel[dimensie.getY()][dimensie.getX()];
+        levelCells = new JPanel[dimensie.getY()][dimensie.getX()];
 
         setTitle("LevelGrid");
         setSize(VAK_BREEDTE * dimensie.getX(), (VAK_HOOGTE * dimensie.getY()) + 52);
@@ -54,11 +58,14 @@ public class Level extends JFrame implements KeyListener,ActionListener {
         this.setFocusable(true);
         this.addKeyListener(this);
 
-        dispatchEvent(new WindowEvent(this , WindowEvent.WINDOW_CLOSING));
+        dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         setResizable(false);
         setVisible(true);
     }
 
+    /**
+     *
+     */
     private void creëerVeld() {
         paneelLevel = new JPanel();
         paneelLevel.setLayout(new GridLayout(dimensie.getY(), dimensie.getX(), 0, 0));
@@ -66,30 +73,36 @@ public class Level extends JFrame implements KeyListener,ActionListener {
         paneelLevel.setOpaque(false);
         for (int i = 0; i < dimensie.getY(); i++) {
             for (int j = 0; j < dimensie.getX(); j++) {
-                testCells[i][j] = new JPanel();
+                levelCells[i][j] = new JPanel();
                 if (speelVeld[i][j].getSpelElementIcon() != null) {
-                    testCells[i][j].setLayout(new OverlayLayout(testCells[i][j]));
-
+                    levelCells[i][j].setLayout(new OverlayLayout(levelCells[i][j]));
+                    //Hier vertellen wat hij doet!
                     if (speelVeld[i][j].getSpelElement() instanceof Sleutel || speelVeld[i][j].getSpelElement() instanceof Barricade) {
                         JLabel label = new JLabel("" + speelVeld[i][j].getSpelElement().getPincode());
                         label.setOpaque(false);
-                        testCells[i][j].add(label);
+                        levelCells[i][j].add(label);
                     }
                     JLabel vak = new JLabel(speelVeld[i][j].getSpelElementIcon());
-                    testCells[i][j].add(vak);
-                    //testCells[i][j].setLayout(new GridLayout(0,1));
+                    levelCells[i][j].add(vak);
                 }
-                paneelLevel.add(testCells[i][j]);
+                paneelLevel.add(levelCells[i][j]);
             }
         }
     }
 
+    /**
+     *
+     */
     private void creëerSpeler() {
         spelerPos = speler.getPositie();
         speler = new Speler(spelerPos);
-        testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
+        levelCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
     }
-    
+
+    /**
+     *
+     * @param event
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == resetKnop) {
@@ -99,56 +112,68 @@ public class Level extends JFrame implements KeyListener,ActionListener {
         repaint();
     }
 
+    /**
+     *
+     */
     private void paneelKnoppen() {
         resetKnop = new JButton("Reset");
         resetKnop.addActionListener(this);
     }
 
+    /**
+     *
+     */
     private void maakPaneel() {
         paneelKnoppen = new JPanel();
         paneelKnoppen.setBackground(Color.DARK_GRAY);
         paneelKnoppen.add(resetKnop);
-
+        //Voegt de panelen toe aan de BorderLayout van de JFrame van Level
         add(paneelLevel, BorderLayout.CENTER);
         add(paneelKnoppen, BorderLayout.SOUTH);
     }
 
-    protected void resetLevel() {
+    /**
+     *
+     */
+    private void resetLevel() {
         dispose();
         Level l = new Level(padNaarLevel);
     }
 
-    public void bereiktEindveld() {
+    /**
+     *
+     */
+    private void bereiktEindveld() {
         JOptionPane.showMessageDialog(null, "Klik op deze knop om het volgende level te kiezen", "Gefeliciteerd!", JOptionPane.PLAIN_MESSAGE);
         setVisible(false);
     }
-    
-    
-    
-    
-    @Override
-        public void keyPressed(KeyEvent event) {
-            int code = event.getKeyCode();
 
-            testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
-            testCells[spelerPos.getY()][spelerPos.getX()].repaint();
-            SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
-            int nextX = spelerPos.getX();
-            int nextY = spelerPos.getY();
-            
-            //Als speler op omkeervak staat
-            if ((speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof OmkeerVak)) {
-                aantalStappenOmgekeerd = 5;
-            }
-            //Controlleer of de keypress wel echt omhoog,omlaag,links,rechts of spatiebalk is
-            if(c != null) {
-                switch (c) {
-                
+    /**
+     *
+     * @param event
+     */
+    @Override
+    public void keyPressed(KeyEvent event) {
+        int code = event.getKeyCode();
+
+        levelCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
+        levelCells[spelerPos.getY()][spelerPos.getX()].repaint();
+        SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
+        int nextX = spelerPos.getX();
+        int nextY = spelerPos.getY();
+
+        //Als speler op omkeervak staat
+        if ((speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof OmkeerVak)) {
+            aantalStappenOmgekeerd = 5;
+        }
+        //Controlleer of de keypress wel echt omhoog,omlaag,links,rechts of spatiebalk is
+        if (c != null) {
+            switch (c) {
+
                 case OMHOOG:
                     nextX = spelerPos.getX();
                     if (aantalStappenOmgekeerd > 0) {
                         nextY = spelerPos.getY() + 1;
-                        
                     } else {
                         nextY = spelerPos.getY() - 1;
                     }
@@ -189,65 +214,73 @@ public class Level extends JFrame implements KeyListener,ActionListener {
                     spelerSleutelPakken();
 
                     break;
+            }
+        }
+        //Controleer of speler niet uit het veld gaat
+        if (isInVeld(new Dimensie(nextX, nextY))) {
+            if (speelVeld[nextY][nextX].isBezetBaar(speler)) {
+                //Als er een barricade komt
+                if (speelVeld[nextY][nextX].getSpelElement() instanceof Barricade) {
+                    speelVeld[nextY][nextX].verwijderSpelElement();
+                    levelCells[nextY][nextX].removeAll();
+                }
+                //Zet spelerpositie naar nextX, nextY
+                spelerPos.setY(nextY);
+                spelerPos.setX(nextX);
+                //Als er omgekeerde stappen gemaakt zijn, doe -1
+                if (aantalStappenOmgekeerd > 0) {
+                    aantalStappenOmgekeerd--;
                 }
             }
-            
-            
-            
-            //Controleer of speler niet uit het veld gaat
-            if (isInVeld(new Dimensie(nextX, nextY))) {
-                if (speelVeld[nextY][nextX].isBezetBaar(speler)) {
-                    //Als er een barricade komt
-                    if (speelVeld[nextY][nextX].getSpelElement() instanceof Barricade) {
-                        speelVeld[nextY][nextX].verwijderSpelElement();
-                        testCells[nextY][nextX].removeAll();
-                    }
-                    
-                    
-                    //Zet spelerpositie naar nextX, nextY
-                    spelerPos.setY(nextY);
-                    spelerPos.setX(nextX);
-                    
-                    //Als er omgekeerde stappen gemaakt zijn, doe -1
-                    if (aantalStappenOmgekeerd > 0) {
-                        aantalStappenOmgekeerd--;
-                    }
-                    
-                }
-
-                //Als speler zich op het eindveld gaat bevinden
-                if (speelVeld[nextY][nextX].getSpelElement() instanceof Eindveld) {
-                    bereiktEindveld();
-                }
-
+            //Als speler zich op het eindveld gaat bevinden
+            if (speelVeld[nextY][nextX].getSpelElement() instanceof Eindveld) {
+                bereiktEindveld();
             }
-            testCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
-            testCells[spelerPos.getY()][spelerPos.getX()].repaint();
         }
+        levelCells[spelerPos.getY()][spelerPos.getX()].add(speler.getSpelerLabel());
+        levelCells[spelerPos.getY()][spelerPos.getX()].repaint();
+    }//Einde keyPressed
 
-        @Override
-        public void keyTyped(KeyEvent event) {
-        }
+    /**
+     *
+     * @param event
+     */
+    @Override
+    public void keyTyped(KeyEvent event) {
+    }
 
-        @Override
-        public void keyReleased(KeyEvent event) {
-        }
-    
-    
-    
-    
+    /**
+     *
+     * @param event
+     */
+    @Override
+    public void keyReleased(KeyEvent event) {
+    }
 
-    //Aangemaakt voor JUNIT testing
+    /**
+     * Aangemaakt voor JUNIT testing
+     *
+     * @return
+     */
     public Speler getSpeler() {
         return this.speler;
     }
 
-    //Aangemaakt voor JUNIT testing
+    /**
+     * Aangemaakt voor JUNIT testing
+     *
+     * @return
+     */
     public Veld[][] getSpeelVeld() {
         return this.speelVeld;
     }
 
-    public boolean isInVeld(Dimensie pos) {
+    /**
+     *
+     * @param pos
+     * @return
+     */
+    private boolean isInVeld(Dimensie pos) {
         if (pos.getX() >= 0 && pos.getX() < dimensie.getX() && pos.getY() >= 0 && pos.getY() < dimensie.getY()) {
             return true;
         } else {
@@ -255,18 +288,23 @@ public class Level extends JFrame implements KeyListener,ActionListener {
         }
     }
 
-    public void spelerSleutelPakken() {
-
+    /**
+     *
+     */
+    private void spelerSleutelPakken() {
         if (speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement() instanceof Sleutel) {
             speler.setSleutel((Sleutel) speelVeld[spelerPos.getY()][spelerPos.getX()].getSpelElement());
-            System.out.println("Speler sleutel: " + speler.getSleutel().getPincode());
-            speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement(); // Element verdwijnt maar de afbeelding blijft hangen!!!
-            testCells[spelerPos.getY()][spelerPos.getX()].removeAll();
+            speelVeld[spelerPos.getY()][spelerPos.getX()].verwijderSpelElement();
+            levelCells[spelerPos.getY()][spelerPos.getX()].removeAll();
             revalidate();
             repaint();
         }
     }
 
+    /**
+     *
+     * @param pad
+     */
     private void loadLevel(String pad) {
         // The name of the file to open.
         String file = new String();
@@ -372,8 +410,6 @@ public class Level extends JFrame implements KeyListener,ActionListener {
                         break;
                 }
             }
-
         }
-    }
-
-}
+    }//Einde loadLevel
+}//Einde Level

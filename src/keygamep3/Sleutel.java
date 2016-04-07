@@ -8,8 +8,8 @@ package keygamep3;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Ruben
+ * Sleutel is een subklasse van SpelElement
+ * @author Ruben, Koray, Ruben
  */
 public class Sleutel extends SpelElement {
 
@@ -17,21 +17,38 @@ public class Sleutel extends SpelElement {
     
     private ImageIcon afbeelding;
 
+    /**
+     * Constructor Sleutel heeft een pincode
+     * @param pincode 
+     */
     public Sleutel(int pincode) {
+        this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
         this.pincode = pincode;
     }
-
+    
+    /**
+     * Vraagt afbeelding
+     * @return 
+     */
     @Override
     public ImageIcon getAfbeelding() {           
-        this.afbeelding = new ImageIcon("Plaatjes/sleutel.png");
         return afbeelding;
     }
-
+    
+    /**
+     * Vraagt pincode
+     * @return 
+     */
     @Override
     public int getPincode() {
         return this.pincode;
     }
 
+    /**
+     * Geeft aan dat sleutel altijd toegankelijk is 
+     * @param pincode
+     * @return 
+     */
     @Override
     public boolean isToegankelijk(int pincode) {
         return true;
