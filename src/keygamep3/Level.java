@@ -42,7 +42,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
      */
     public Level(String padNaarLevel) {
         this.padNaarLevel = padNaarLevel;
-        loadLevel(padNaarLevel);
+        laadLevel(padNaarLevel);
 
         levelCells = new JPanel[dimensie.getY()][dimensie.getX()];
 
@@ -311,7 +311,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
      *
      * @param pad
      */
-    private void loadLevel(String pad) {
+    private void laadLevel(String pad) {
         // Hier wordt het txt file als een string opgeslagen.
         String file = new String();
         //Probeer het txt file te vinden en te lezen
