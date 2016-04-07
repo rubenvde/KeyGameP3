@@ -280,7 +280,7 @@ public class Level extends JFrame implements KeyListener, ActionListener {
      * @param pos
      * @return
      */
-    private boolean isInVeld(Dimensie pos) {
+    public boolean isInVeld(Dimensie pos) {
         if (pos.getX() >= 0 && pos.getX() < dimensie.getX() && pos.getY() >= 0 && pos.getY() < dimensie.getY()) {
             return true;
         } else {
