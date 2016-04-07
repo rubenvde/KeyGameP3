@@ -6,19 +6,16 @@
 package keygamep3;
 
 /**
- *
- * @author rubenvde
+ * Klasse om het spel te starten
+ * @author rubenvde, Koray, Ruben
  */
 public class KeyGameP3 {
 
     /**
+     * Start Spel
      * @param args the command line arguments
      */
-    
-    
-    
     public static void main(String[] args) {
         Spel spel = new Spel();
     }
-    
 }
