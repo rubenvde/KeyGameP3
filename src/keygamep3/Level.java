@@ -143,7 +143,9 @@ public class Level extends JFrame {
             SpelToetsCode c = SpelToetsCode.getEnumNaam(code);
             int nextX = spelerPos.getX();
             int nextY = spelerPos.getY();
-            switch (c) {
+            //Controlleer of de keypress wel echt omhoog,omlaag,links,rechts of spatiebalk is
+            if(c != null) {
+                switch (c) {
                 
                 case OMHOOG:
                     nextX = spelerPos.getX();
@@ -192,8 +194,9 @@ public class Level extends JFrame {
                     spelerSleutelPakken();
 
                     break;
-                //}
+                }
             }
+            
             //Controleer of speler niet uit het veld gaat
             if (isInVeld(new Dimensie(nextX, nextY))) {
                 if (speelVeld[nextY][nextX].isBezetBaar(speler)) {
