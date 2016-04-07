@@ -15,11 +15,24 @@ import javax.swing.ImageIcon;
 public abstract class SpelElement {
 
     private ImageIcon afbeelding;
-    
+ 
+    /**
+     * Elke subklasse moet deze methode hebben om de afbeelding te vragen
+     * @return 
+     */
     public abstract ImageIcon getAfbeelding();
-        
+    
+    /**
+     * Elke subklasse moet deze methode hebben om de toegankelijkheid te controleren
+     * @param pincode
+     * @return 
+     */
     public abstract boolean isToegankelijk(int pincode);
     
+    /**
+     * Elke subklasse moet deze methode hebben om de pincode te vragen
+     * @return 
+     */
     public abstract int getPincode();
 
 }
