@@ -18,7 +18,7 @@ import javax.swing.*;
  *
  * @author Ruben, Koray, Ruben
  */
-public class Level extends JFrame {
+public class Level extends JFrame implements KeyListener {
 
     private final int VAK_BREEDTE = 64;
     private final int VAK_HOOGTE = 64;
@@ -52,7 +52,7 @@ public class Level extends JFrame {
         maakPaneel();
 
         this.setFocusable(true);
-        this.addKeyListener(new VerplaatsSpeler());
+        this.addKeyListener(this);
 
         dispatchEvent(new WindowEvent(this , WindowEvent.WINDOW_CLOSING));
         setResizable(false);
@@ -92,7 +92,7 @@ public class Level extends JFrame {
 
     ///    
     /// Inner class
-    class KnopActie implements ActionListener {
+    class ResetActie implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent event) {
@@ -106,7 +106,7 @@ public class Level extends JFrame {
 
     private void paneelKnoppen() {
         resetKnop = new JButton("Reset");
-        resetKnop.addActionListener(new KnopActie());
+        resetKnop.addActionListener(new ResetActie());
     }
 
     private void maakPaneel() {
@@ -129,13 +129,10 @@ public class Level extends JFrame {
     }
     
     
-    //
-    // Inner Class verplaatsSpeler
-    class VerplaatsSpeler implements KeyListener {
-
-        @Override
+    
+    
+    @Override
         public void keyPressed(KeyEvent event) {
-            //int teller = 0;
             int code = event.getKeyCode();
 
             testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
@@ -240,8 +237,10 @@ public class Level extends JFrame {
         @Override
         public void keyReleased(KeyEvent event) {
         }
-
-    }// EINDE INNER CLASS verplaatsSpeler
+    
+    
+    
+    
 
     //Aangemaakt voor JUNIT testing
     public Speler getSpeler() {
