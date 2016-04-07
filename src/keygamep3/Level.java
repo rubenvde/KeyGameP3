@@ -54,7 +54,7 @@ public class Level extends JFrame {
         this.setFocusable(true);
         this.addKeyListener(new VerplaatsSpeler());
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        dispatchEvent(new WindowEvent(this , WindowEvent.WINDOW_CLOSING));
         setResizable(false);
         setVisible(true);
     }
