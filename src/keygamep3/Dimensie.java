@@ -7,30 +7,51 @@ package keygamep3;
 
 /**
  *
- * @author rubenvde
+ * @author rubenvde, Koray, Ruben
  */
 public class Dimensie {
     private int x;
     private int y;
     
+    /**
+     * Contructor van Dimensie
+     * @param x
+     * @param y 
+     */
     public Dimensie(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
+    /**
+     * Vraag X op
+     * @return 
+     */
     public int getX() {
         return this.x;
     }
     
+    /**
+     * Vraag Y op
+     * @return 
+     */
     public int getY() {
         return this.y;
     }
     
-    public void setX(int x){
+    /**
+     * Wijzig X
+     * @param x 
+     */
+    public void setX(int x) {
         this.x = x;
     }
     
-    public void setY(int y){
+    /**
+     * Wijzig Y
+     * @param y 
+     */
+    public void setY(int y) {
         this.y = y;
     }
 }

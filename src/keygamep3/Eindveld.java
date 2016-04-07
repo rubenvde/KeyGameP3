@@ -8,22 +8,33 @@ package keygamep3;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Ruben
+ *Eindveld is een subklasse van SpelElement
+ * @author Ruben, Koray, Ruben
  */
 public class Eindveld extends SpelElement {
     
     private ImageIcon afbeelding;
     
+    /**
+     * Constructor Eindveld
+     */
     public Eindveld() {
-        
+       this.afbeelding = new ImageIcon("Plaatjes/Eindveld.png"); 
     }
     
+    /**
+     * vraagt afbeelding van Eindveld
+     * @return 
+     */
     public ImageIcon getAfbeelding() {
-        this.afbeelding = new ImageIcon("Plaatjes/Eindveld.png");
         return afbeelding;
     }
     
+    /**
+     * 
+     * @param pincode
+     * @return 
+     */
     public boolean isToegankelijk(int pincode) {
         return true;
     }
