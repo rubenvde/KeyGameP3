@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="henkie" name="keygamep3.LevelTest" skipped="0" tests="7" time="2.244" timestamp="2016-04-07T11:45:34">
+<testsuite errors="0" failures="0" hostname="henkie" name="keygamep3.LevelTest" skipped="0" tests="7" time="3.003" timestamp="2016-04-07T18:39:16">
   <properties>
     <property name="netbeans.autoupdate.country" value="NL" />
     <property name="javac.test.classpath" value=":build/classes:C:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar" />
@@ -38,7 +38,7 @@
     <property name="user.name" value="Ruben" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner keygamep3.LevelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\build\test\results\TEST-keygamep3.LevelTest.xml crashfile=C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\build\junitvmwatcher1989154058431629101.properties propsfile=C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\build\junit3275024938366513679.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner keygamep3.LevelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\build\test\results\TEST-keygamep3.LevelTest.xml crashfile=C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\build\junitvmwatcher1172804650637201628.properties propsfile=C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\build\junit1685209030606882773.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -67,7 +67,7 @@
     <property name="javac.debug" value="true" />
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
-    <property name="javac.includesfile.binary" value="C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\null1856498908" />
+    <property name="javac.includesfile.binary" value="C:\Users\Ruben\Documents\NetBeansProjects\KeyGameP3\null794439828" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="javac.test.processorpath" value=":build/classes:C:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar" />
@@ -301,20 +301,20 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="keygamep3.LevelTest" name="testIsToegankelijkSleutel" time="0.253" />
-  <testcase classname="keygamep3.LevelTest" name="testIsToegankelijkMuur" time="0.016" />
-  <testcase classname="keygamep3.LevelTest" name="testIsNietToegankelijkBarricade" time="1.757" />
-  <testcase classname="keygamep3.LevelTest" name="testIsToegankelijkBarricade" time="0.016" />
+  <testcase classname="keygamep3.LevelTest" name="testIsToegankelijkMuur" time="0.301" />
+  <testcase classname="keygamep3.LevelTest" name="testIsNietToegankelijkBarricade" time="2.393" />
+  <testcase classname="keygamep3.LevelTest" name="testIsToegankelijkSleutel" time="0.015" />
   <testcase classname="keygamep3.LevelTest" name="testIsSpelerInVeld" time="0.016" />
-  <testcase classname="keygamep3.LevelTest" name="testIsSpelerBuitenVeldLinks" time="0.015" />
-  <testcase classname="keygamep3.LevelTest" name="testIsSpelerBuitenVeldRechts" time="0.022" />
-  <system-out><![CDATA[sleutelIsToegankelijk
-muurIsToegankelijk
+  <testcase classname="keygamep3.LevelTest" name="testIsToegankelijkBarricade" time="0.016" />
+  <testcase classname="keygamep3.LevelTest" name="testIsSpelerBuitenVeldRechts" time="0.031" />
+  <testcase classname="keygamep3.LevelTest" name="testIsSpelerBuitenVeldLinks" time="0.031" />
+  <system-out><![CDATA[muurIsToegankelijk
 barricadeIsNietToegankelijk
-barricadeIsToegankelijk
+sleutelIsToegankelijk
 spelerIsInVeld
-spelerIsBuitenVeldLinks
+barricadeIsToegankelijk
 spelerIsBuitenVeldRechts
+spelerIsBuitenVeldLinks
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

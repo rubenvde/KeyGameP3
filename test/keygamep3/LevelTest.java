@@ -94,7 +94,6 @@ public class LevelTest {
     public void testIsSpelerBuitenVeldLinks() {
         System.out.println("spelerIsBuitenVeldLinks");
         Level instance = new Level("temp.txt");
-        Speler speler = instance.getSpeler();
 
         assertEquals("Speler is buiten het speelveld aan de linkerkant", false, instance.isInVeld(new Dimensie(-1, 2)));
     }
@@ -105,7 +104,6 @@ public class LevelTest {
     public void testIsSpelerBuitenVeldRechts() {
         System.out.println("spelerIsBuitenVeldRechts");
         Level instance = new Level("temp.txt");
-        Speler speler = instance.getSpeler();
 
         assertEquals("Speler is buiten het speelveld aan de rechterkant", false, instance.isInVeld(new Dimensie(20, 2)));
     }
@@ -116,7 +114,6 @@ public class LevelTest {
     public void testIsSpelerInVeld() {
         System.out.println("spelerIsInVeld");
         Level instance = new Level("temp.txt");
-        Speler speler = instance.getSpeler();
 
         assertEquals("Speler is in het speelveld", true, instance.isInVeld(new Dimensie(1, 2)));
     }
