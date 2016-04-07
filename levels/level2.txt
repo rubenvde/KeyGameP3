@@ -1,1 +1,1 @@
-x:5,y:5,veld:E,M,S(300),M,S(900),B(900),M,O,M,O,X,S(100),X,M,X,X,X,X,M,B(100),P,M,X,B(300),X
+x:5,y:5,veld:E,M,S(300),M,S(900),B(900),M,O,M,O,X,S(100),X,M,X,X,M,X,M,B(100),P,M,X,B(300),X
