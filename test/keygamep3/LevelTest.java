@@ -43,19 +43,17 @@ public class LevelTest {
      */
     @Test
     public void testIsToegankelijkSleutel() {
-        System.out.println("isToegankelijk");
+        System.out.println("sleutelIsToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
         Veld[][] speelVeld = instance.getSpeelVeld();
 
         assertEquals("Sleutel is toegankelijk", true, speelVeld[2][3].isBezetBaar(speler));
-
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     @Test
     public void testIsToegankelijkMuur() {
-        System.out.println("isToegankelijk");
+        System.out.println("muurIsToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
         Veld[][] speelVeld = instance.getSpeelVeld();
@@ -64,32 +62,52 @@ public class LevelTest {
     }
 
     @Test
-    public void testIsToegankelijkBarricade() {
-        System.out.println("isToegankelijk");
+    public void testIsNietToegankelijkBarricade() {
+        System.out.println("barricadeIsNietToegankelijk");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
         Veld[][] speelVeld = instance.getSpeelVeld();
 
         assertEquals("Barricade is gesloten", false, speelVeld[1][1].isBezetBaar(speler));
+    }
+
+    @Test
+    public void testIsToegankelijkBarricade() {
+        System.out.println("barricadeIsToegankelijk");
+        Level instance = new Level("temp.txt");
+        Speler speler = instance.getSpeler();
+        Veld[][] speelVeld = instance.getSpeelVeld();
 
         speler.setSleutel(new Sleutel(100));
 
         assertEquals("Barricade is geopend", true, speelVeld[1][1].isBezetBaar(speler));
     }
-    
+
     @Test
-    public void testIsSpelerInVeld() {
-        System.out.println("IsInVeld");
+    public void testIsSpelerBuitenVeldLinks() {
+        System.out.println("spelerIsBuitenVeldLinks");
         Level instance = new Level("temp.txt");
         Speler speler = instance.getSpeler();
-        
 
         assertEquals("Speler is buiten het speelveld aan de linkerkant", false, instance.isInVeld(new Dimensie(-1, 2)));
-        
-        assertEquals("Speler is buiten het speelveld aan de rechterkant", false, instance.isInVeld(new Dimensie( 20, 2)));
-
-        speler.setSleutel(new Sleutel(100));
-
-        assertEquals("Speler is in het speelveld", true, instance.isInVeld(new Dimensie( 1, 2)));
     }
+
+    @Test
+    public void testIsSpelerBuitenVeldRechts() {
+        System.out.println("spelerIsBuitenVeldRechts");
+        Level instance = new Level("temp.txt");
+        Speler speler = instance.getSpeler();
+
+        assertEquals("Speler is buiten het speelveld aan de rechterkant", false, instance.isInVeld(new Dimensie(20, 2)));
+    }
+
+    @Test
+    public void testIsSpelerInVeld() {
+        System.out.println("spelerIsInVeld");
+        Level instance = new Level("temp.txt");
+        Speler speler = instance.getSpeler();
+
+        assertEquals("Speler is in het speelveld", true, instance.isInVeld(new Dimensie(1, 2)));
+    }
+
 }
