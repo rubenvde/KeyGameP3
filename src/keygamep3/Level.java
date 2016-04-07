@@ -52,7 +52,7 @@ public class Level extends JFrame {
         maakPaneel();
 
         this.setFocusable(true);
-        this.addKeyListener(new verplaatsSpeler());
+        this.addKeyListener(new VerplaatsSpeler());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -92,7 +92,7 @@ public class Level extends JFrame {
 
     ///    
     /// Inner class
-    class knopActie implements ActionListener {
+    class KnopActie implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent event) {
@@ -106,7 +106,7 @@ public class Level extends JFrame {
 
     private void paneelKnoppen() {
         resetKnop = new JButton("Reset");
-        resetKnop.addActionListener(new knopActie());
+        resetKnop.addActionListener(new KnopActie());
     }
 
     private void maakPaneel() {
@@ -131,7 +131,7 @@ public class Level extends JFrame {
     
     //
     // Inner Class verplaatsSpeler
-    class verplaatsSpeler implements KeyListener {
+    class VerplaatsSpeler implements KeyListener {
 
         @Override
         public void keyPressed(KeyEvent event) {

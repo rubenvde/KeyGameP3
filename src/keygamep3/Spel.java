@@ -29,7 +29,7 @@ public class Spel{
         frame.setSize(FRAME_WIDTH, FRAME_HEIGTH);
         
         openLevel = new JButton("Open Level");
-        openLevel.addActionListener(new knopActie());
+        openLevel.addActionListener(new KnopActie());
         
         frame.add(openLevel);
         
@@ -40,7 +40,7 @@ public class Spel{
     }
     
     // Inner Class knopActie voor de knoppen Start en Reset
-    class knopActie implements ActionListener{
+    class KnopActie implements ActionListener{
           
         @Override
         public void actionPerformed(ActionEvent event)
