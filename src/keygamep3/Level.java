@@ -330,7 +330,7 @@ public class Level extends JFrame {
         speelVeld = new Veld[y][x];
 
         for (int i = 0; i < veld.length; i++) {
-            int tempY = round(i / y);
+            int tempY = round(i / x);
             int tempX = i % x;
             speelVeld[tempY][tempX] = new Veld();
 
