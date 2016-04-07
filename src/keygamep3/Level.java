@@ -33,6 +33,8 @@ public class Level extends JFrame {
     private String padNaarLevel;
 
     private Veld[][] speelVeld;
+    
+    private int teller = 0;
 
     public Level(String padNaarLevel) {
         this.padNaarLevel = padNaarLevel;
@@ -133,7 +135,7 @@ public class Level extends JFrame {
 
         @Override
         public void keyPressed(KeyEvent event) {
-
+            //int teller = 0;
             int code = event.getKeyCode();
 
             testCells[spelerPos.getY()][spelerPos.getX()].remove(speler.getSpelerLabel());
@@ -142,11 +144,14 @@ public class Level extends JFrame {
             int nextX = spelerPos.getX();
             int nextY = spelerPos.getY();
             switch (c) {
-
+                
                 case OMHOOG:
                     nextX = spelerPos.getX();
                     if ((speelVeld[nextY][nextX].getSpelElement() instanceof OmkeerVak)) {
+                        teller++;
+                        System.out.println("teller" + teller);
                         nextY = spelerPos.getY() + 1;
+                        
                     } else {
                         nextY = spelerPos.getY() - 1;
                     }
